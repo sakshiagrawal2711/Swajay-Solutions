@@ -35,8 +35,13 @@ const CoreValues = () => {
     ];
 
     return (
-        <section className="relative py-24 overflow-hidden bg-[#0F172A]">
+        <section className="relative py-24 overflow-hidden bg-blue-50">
             <div className="container mx-auto px-6">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Purpose</h2>
+                    <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                     {values.map((item, index) => (
                         <motion.div
@@ -45,19 +50,19 @@ const CoreValues = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-slate-800/50 p-8 rounded-xl border border-white/10 shadow-lg backdrop-blur-md hover:bg-slate-800/70 hover:border-primary/30 transition-all duration-300 group flex flex-col text-left"
+                            className="bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col text-left"
                         >
                             <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors text-primary">
                                 {item.icon}
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{item.title}</h3>
-                            <p className="text-gray-300 leading-relaxed text-sm flex-grow mb-6">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">{item.title}</h3>
+                            <p className="text-gray-600 leading-relaxed text-sm flex-grow mb-6">
                                 {item.description}
                             </p>
 
-                            <div className="pt-6 border-t border-white/10 mt-auto">
+                            <div className="pt-6 border-t border-gray-100 mt-auto">
                                 <p className="text-xs font-bold text-primary uppercase tracking-wider mb-2">Core Value</p>
-                                <p className="text-sm font-medium text-gray-200">{item.impact}</p>
+                                <p className="text-sm font-medium text-gray-700">{item.impact}</p>
                             </div>
                         </motion.div>
                     ))}

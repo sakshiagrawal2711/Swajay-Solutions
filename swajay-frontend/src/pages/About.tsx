@@ -22,14 +22,14 @@ function Counter({ from = 0, to, duration = 2, suffix = "" }: { from?: number; t
 
 const About = () => {
     return (
-        <div className="min-h-screen bg-[#0B1221]">
+        <div className="min-h-screen bg-blue-50">
             <PageHero
                 title="About Swajay"
                 subtitle="Decades of expertise, modern innovation, and a commitment to solving real business challenges"
             />
 
             {/* Mission Section */}
-            <section className="py-20 px-6 md:px-16 overflow-hidden bg-gradient-to-b from-[#0F172A] to-[#1E293B]">
+            <section id="mission" className="py-20 px-6 md:px-16 overflow-hidden bg-blue-50">
                 <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -41,18 +41,18 @@ const About = () => {
                             <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
-                            <h2 className="text-3xl md:text-4xl font-bold text-white">Our Mission</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Mission</h2>
                         </div>
-                        <p className="text-gray-300 mb-6 leading-relaxed">
+                        <p className="text-gray-600 mb-6 leading-relaxed">
                             Make advanced AI solutions useful and affordable—shipped quickly, run responsibly, and scaled with customers.
                         </p>
                         <ul className="space-y-3">
                             {['Speed without sacrifice', 'Affordability at scale', 'Responsible innovation'].map((item, index) => (
                                 <li key={index} className="flex items-center gap-3">
-                                    <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
-                                    <span className="text-gray-200 font-medium">{item}</span>
+                                    <span className="text-gray-700 font-medium">{item}</span>
                                 </li>
                             ))}
                         </ul>
@@ -63,44 +63,44 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="bg-white/5 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/10 relative overflow-hidden group"
+                        className="bg-white rounded-2xl p-8 md:p-12 border border-gray-100 shadow-lg relative overflow-hidden group"
                     >
                         <div className="relative z-10">
-                            <div className="w-16 h-16 bg-white/10 rounded-2xl shadow-sm flex items-center justify-center mb-6 text-primary border border-white/5">
+                            <div className="w-16 h-16 bg-primary/10 rounded-2xl shadow-sm flex items-center justify-center mb-6 text-primary border border-primary/5">
                                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-medium text-white">
+                            <h3 className="text-xl font-medium text-gray-900">
                                 Mission-driven innovation focused on real business outcomes
                             </h3>
                         </div>
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-2xl transform translate-x-10 -translate-y-10 transition-transform duration-700 group-hover:scale-150"></div>
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl transform translate-x-10 -translate-y-10 transition-transform duration-700 group-hover:scale-150"></div>
                     </motion.div>
                 </div>
             </section>
 
             {/* Vision Section */}
-            <section className="py-20 px-6 md:px-16 bg-[#0B1221] overflow-hidden">
+            <section className="py-20 px-6 md:px-16 bg-blue-50 overflow-hidden">
                 <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="bg-white/5 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/10 relative overflow-hidden group order-2 md:order-1"
+                        className="bg-white rounded-2xl p-8 md:p-12 border border-gray-100 shadow-lg relative overflow-hidden group order-2 md:order-1"
                     >
                         <div className="relative z-10">
-                            <div className="w-16 h-16 bg-white/10 rounded-2xl shadow-sm flex items-center justify-center mb-6 text-primary border border-white/5">
+                            <div className="w-16 h-16 bg-primary/10 rounded-2xl shadow-sm flex items-center justify-center mb-6 text-primary border border-primary/5">
                                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-medium text-white">
+                            <h3 className="text-xl font-medium text-gray-900">
                                 Enabling organizational excellence across industries
                             </h3>
                         </div>
-                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/20 rounded-full blur-2xl transform -translate-x-10 translate-y-10 transition-transform duration-700 group-hover:scale-150"></div>
+                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl transform -translate-x-10 translate-y-10 transition-transform duration-700 group-hover:scale-150"></div>
                     </motion.div>
 
                     <motion.div
@@ -115,18 +115,18 @@ const About = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                             </svg>
-                            <h2 className="text-3xl md:text-4xl font-bold text-white">Our Vision</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Vision</h2>
                         </div>
-                        <p className="text-gray-300 mb-6 leading-relaxed">
+                        <p className="text-gray-600 mb-6 leading-relaxed">
                             To deliver intelligent Automation and AI solutions that empower organizations in Mortgage, BFSI/Healthcare, Commerce, and Legal domains to achieve superior customer outcomes and operational excellence.
                         </p>
                         <ul className="space-y-3">
                             {['Industry-leading automation', 'Superior customer outcomes', 'Operational excellence'].map((item, index) => (
                                 <li key={index} className="flex items-center gap-3">
-                                    <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
-                                    <span className="text-gray-200 font-medium">{item}</span>
+                                    <span className="text-gray-700 font-medium">{item}</span>
                                 </li>
                             ))}
                         </ul>
@@ -135,33 +135,33 @@ const About = () => {
             </section>
 
             {/* Stats Section */}
-            <section className="bg-[#0F172A] py-20 px-6 md:px-16 text-white border-y border-white/5">
+            <section className="bg-white py-20 px-6 md:px-16 text-gray-900 border-y border-gray-100">
                 <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     {[
-                        { number: 15, suffix: "+", label: "Years Experience" },
-                        { number: 50, suffix: "+", label: "Projects Delivered" },
                         { number: 100, suffix: "%", label: "Client Satisfaction" },
-                        { number: 24, suffix: "/7", label: "Support Available" }
+                        { number: 24, suffix: "/7", label: "Support" },
+                        { number: 99, suffix: ".3%", label: "Quality" },
+                        { number: 100, suffix: "%", label: "Regulatory Compliance" }
                     ].map((stat, index) => (
                         <div key={index} className="space-y-2">
-                            <div className="text-4xl md:text-5xl font-bold text-primary drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
+                            <div className="text-4xl md:text-5xl font-bold text-primary drop-shadow-sm">
                                 <Counter from={0} to={stat.number} suffix={stat.suffix} />
                             </div>
-                            <p className="text-gray-400 font-medium">{stat.label}</p>
+                            <p className="text-gray-600 font-medium">{stat.label}</p>
                         </div>
                     ))}
                 </div>
             </section>
 
             {/* Our Team Section */}
-            <section className="py-24 px-6 md:px-16 bg-gradient-to-b from-[#0B1221] to-[#0F172A]">
+            <section className="py-24 px-6 md:px-16 bg-blue-50">
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-4xl font-bold text-white mb-4"
+                            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
                         >
                             Our Team
                         </motion.h2>
@@ -181,9 +181,9 @@ const About = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 mb-16 text-center backdrop-blur-sm"
+                        className="bg-white border border-gray-100 rounded-3xl p-8 md:p-12 mb-16 text-center shadow-md"
                     >
-                        <p className="text-gray-300 leading-relaxed max-w-4xl mx-auto space-y-6 text-lg">
+                        <p className="text-gray-600 leading-relaxed max-w-4xl mx-auto space-y-6 text-lg">
                             <span className="block mb-6">
                                 Our leadership team brings decades of hands-on experience across mortgage lending, servicing operations, and the broader BFSI landscape—including banking, financial services, and regulated enterprise environments. What sets us apart isn't tenure alone, but our ability to translate deep industry expertise into consistent, measurable outcomes.
                             </span>
@@ -199,55 +199,10 @@ const About = () => {
                         </p>
                     </motion.div>
 
-                    {/* Value Cards */}
-                    <div className="grid md:grid-cols-3 gap-8 mb-24">
-                        {[
-                            {
-                                title: "Speed & Agility",
-                                desc: "Moving quickly with purpose and precision",
-                                icon: (
-                                    <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                    </svg>
-                                )
-                            },
-                            {
-                                title: "Collaborative Expertise",
-                                desc: "Teams that combine domain knowledge with modern technology",
-                                icon: (
-                                    <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                    </svg>
-                                )
-                            },
-                            {
-                                title: "Proven Excellence",
-                                desc: "Decades of hands-on experience delivering measurable outcomes",
-                                icon: (
-                                    <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z" />
-                                    </svg>
-                                )
-                            }
-                        ].map((item, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="bg-white/5 p-8 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md hover:bg-white/10 transition-all duration-300"
-                            >
-                                <div className="mb-4">{item.icon}</div>
-                                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
 
                     {/* Partners Grid */}
                     <div className="text-center mb-12">
-                        <h3 className="text-2xl font-bold text-white">Leadership</h3>
+                        <h3 className="text-2xl font-bold text-gray-900">Leadership</h3>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[1, 2, 3, 4].map((item) => (
@@ -261,39 +216,39 @@ const About = () => {
                             >
                                 <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                                     {/* Front Face */}
-                                    <div className="absolute inset-0 h-full w-full bg-[#1E293B] rounded-2xl [backface-visibility:hidden] border border-white/10">
+                                    <div className="absolute inset-0 h-full w-full bg-white rounded-2xl [backface-visibility:hidden] border border-gray-100 shadow-md">
                                         <div className="h-full w-full flex flex-col">
-                                            <div className="flex-1 bg-black/20 rounded-2xl relative overflow-hidden mb-4 m-2">
-                                                <div className="absolute inset-0 flex items-center justify-center text-gray-500 font-medium">
+                                            <div className="flex-1 bg-gray-50 rounded-2xl relative overflow-hidden mb-4 m-2">
+                                                <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-medium">
                                                     Partner Photo
                                                 </div>
-                                                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+                                                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300"></div>
                                             </div>
                                             <div className="text-center pb-6">
-                                                <h4 className="text-xl font-bold text-white">Partner {item}</h4>
+                                                <h4 className="text-xl font-bold text-gray-900">Partner {item}</h4>
                                                 <p className="text-primary font-medium">Role / Title</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Back Face */}
-                                    <div className="absolute inset-0 h-full w-full bg-[#0B1221] rounded-2xl p-8 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col items-center justify-center text-center shadow-xl border border-white/10">
+                                    <div className="absolute inset-0 h-full w-full bg-gray-50 rounded-2xl p-8 text-gray-900 [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col items-center justify-center text-center shadow-xl border border-gray-200">
                                         <h4 className="text-xl font-bold mb-2">Partner {item}</h4>
                                         <p className="text-primary text-sm mb-6">Role / Title</p>
 
                                         <div className="space-y-4 w-full">
-                                            <div className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                                            <div className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100 shadow-sm">
                                                 <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                                 </svg>
-                                                <span className="text-sm font-medium">partner{item}@swajay.com</span>
+                                                <span className="text-sm font-medium text-gray-600">partner{item}@swajay.com</span>
                                             </div>
 
-                                            <div className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                                            <div className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100 shadow-sm">
                                                 <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                                 </svg>
-                                                <span className="text-sm font-medium">LinkedIn Profile</span>
+                                                <span className="text-sm font-medium text-gray-600">LinkedIn Profile</span>
                                             </div>
                                         </div>
                                     </div>

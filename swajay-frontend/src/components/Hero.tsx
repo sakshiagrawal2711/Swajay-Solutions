@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Hero = () => {
     return (
         <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#0F172A] to-[#1E293B] pb-0 pt-20 md:pt-0">
@@ -46,17 +48,21 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
-                        <button className="group relative px-6 py-3 bg-primary text-white font-bold text-base rounded-lg hover:scale-105 transition-all duration-300 shadow-[0_4px_14px_0_rgba(59,130,246,0.5)] overflow-hidden">
-                            <span className="relative z-10 flex items-center gap-2">
-                                Get Started
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 group-hover:translate-x-1 transition-transform">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                </svg>
-                            </span>
-                        </button>
-                        <button className="px-6 py-3 bg-transparent border border-white/30 text-white font-bold text-base rounded-lg hover:bg-white/10 hover:border-white/60 transition-all duration-300 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                            Learn More
-                        </button>
+                        <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+                            <button className="group relative px-6 py-3 bg-primary text-white font-bold text-base rounded-lg hover:scale-105 transition-all duration-300 shadow-[0_4px_14px_0_rgba(59,130,246,0.5)] overflow-hidden">
+                                <span className="relative z-10 flex items-center gap-2">
+                                    Get Started
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 group-hover:translate-x-1 transition-transform">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </Link>
+                        <Link to="/about" onClick={() => window.scrollTo(0, 0)}>
+                            <button className="px-6 py-3 bg-transparent border border-white/30 text-white font-bold text-base rounded-lg hover:bg-white/10 hover:border-white/60 transition-all duration-300 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                Learn More
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

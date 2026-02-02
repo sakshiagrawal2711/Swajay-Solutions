@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import PageHero from "../components/PageHero";
 
@@ -214,7 +215,16 @@ const caseStudies: CaseStudy[] = [
 ];
 
 const CaseStudies = () => {
+    const location = useLocation();
     const [activeTab, setActiveTab] = useState(caseStudies[0].id);
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const studyId = params.get('study');
+        if (studyId && caseStudies.find(cs => cs.id === studyId)) {
+            setActiveTab(studyId);
+        }
+    }, [location.search]);
 
     const activeCaseStudy = caseStudies.find(cs => cs.id === activeTab) || caseStudies[0];
 
@@ -255,133 +265,135 @@ const CaseStudies = () => {
                     </div>
 
                     {/* Content Display */}
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeCaseStudy.id}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
-                        >
-                            <div className="flex flex-col lg:flex-row">
-                                {/* Left Column: Image & Quote */}
-                                <div className="lg:w-1/3 bg-gray-100 p-8 flex flex-col gap-6">
-                                    <div className="rounded-xl overflow-hidden shadow-md h-64">
-                                        <img
-                                            src={activeCaseStudy.image}
-                                            alt={activeCaseStudy.title}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
-                                    {activeCaseStudy.quote && (
-                                        <blockquote className="italic text-gray-600 text-sm leading-relaxed border-l-4 border-primary pl-4 py-2">
-                                            "{activeCaseStudy.quote.text}"
-                                            <footer className="mt-2 font-bold text-gray-900 not-italic">
-                                                ----- {activeCaseStudy.quote.author}
-                                            </footer>
-                                        </blockquote>
-                                    )}
-                                </div>
-
-                                {/* Right Column: Content */}
-                                <div className="lg:w-2/3 p-8 md:p-12">
-                                    <div className="flex flex-wrap items-center justify-between mb-6 gap-4">
-                                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{activeCaseStudy.title}</h2>
-                                        <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
-                                            {activeCaseStudy.category}
-                                        </span>
+                    <div id="study-details" className="scroll-mt-32">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeCaseStudy.id}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
+                            >
+                                <div className="flex flex-col lg:flex-row">
+                                    {/* Left Column: Image & Quote */}
+                                    <div className="lg:w-1/3 bg-gray-100 p-8 flex flex-col gap-6">
+                                        <div className="rounded-xl overflow-hidden shadow-md h-64">
+                                            <img
+                                                src={activeCaseStudy.image}
+                                                alt={activeCaseStudy.title}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+                                        {activeCaseStudy.quote && (
+                                            <blockquote className="italic text-gray-600 text-sm leading-relaxed border-l-4 border-primary pl-4 py-2">
+                                                "{activeCaseStudy.quote.text}"
+                                                <footer className="mt-2 font-bold text-gray-900 not-italic">
+                                                    ----- {activeCaseStudy.quote.author}
+                                                </footer>
+                                            </blockquote>
+                                        )}
                                     </div>
 
-                                    <div className="grid md:grid-cols-2 gap-8 mb-8">
-                                        {/* Problem Statement */}
-                                        <div>
-                                            <h3 className="text-lg font-bold text-gray-900 mb-3 border-b pb-2">Problem Statement</h3>
-                                            <ul className="space-y-2 text-gray-600 text-sm list-disc pl-5">
-                                                {activeCaseStudy.problem.map((item, idx) => (
-                                                    <li key={idx} dangerouslySetInnerHTML={{ __html: item.replace("on-premise to cloud", "<strong>on-premise to cloud</strong>").replace("Microservices application", "<strong>Microservices application</strong>") }}></li>
-                                                ))}
-                                            </ul>
+                                    {/* Right Column: Content */}
+                                    <div className="lg:w-2/3 p-8 md:p-12">
+                                        <div className="flex flex-wrap items-center justify-between mb-6 gap-4">
+                                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{activeCaseStudy.title}</h2>
+                                            <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
+                                                {activeCaseStudy.category}
+                                            </span>
                                         </div>
 
-                                        {/* Solution */}
-                                        <div>
-                                            <h3 className="text-lg font-bold text-gray-900 mb-3 border-b pb-2">
-                                                Solution
-                                                {activeCaseStudy.solution.timeline && (
-                                                    <span className="block text-xs font-normal text-gray-500 mt-1 uppercase tracking-tight">
-                                                        Duration: {activeCaseStudy.solution.timeline}
-                                                    </span>
-                                                )}
-                                            </h3>
+                                        <div className="grid md:grid-cols-2 gap-8 mb-8">
+                                            {/* Problem Statement */}
+                                            <div>
+                                                <h3 className="text-lg font-bold text-gray-900 mb-3 border-b pb-2">Problem Statement</h3>
+                                                <ul className="space-y-2 text-gray-600 text-sm list-disc pl-5">
+                                                    {activeCaseStudy.problem.map((item, idx) => (
+                                                        <li key={idx} dangerouslySetInnerHTML={{ __html: item.replace("on-premise to cloud", "<strong>on-premise to cloud</strong>").replace("Microservices application", "<strong>Microservices application</strong>") }}></li>
+                                                    ))}
+                                                </ul>
+                                            </div>
 
-                                            {/* Technologies (Moved here or below? Image puts it parallel to solution/problem or replacing Execution)
+                                            {/* Solution */}
+                                            <div>
+                                                <h3 className="text-lg font-bold text-gray-900 mb-3 border-b pb-2">
+                                                    Solution
+                                                    {activeCaseStudy.solution.timeline && (
+                                                        <span className="block text-xs font-normal text-gray-500 mt-1 uppercase tracking-tight">
+                                                            Duration: {activeCaseStudy.solution.timeline}
+                                                        </span>
+                                                    )}
+                                                </h3>
+
+                                                {/* Technologies (Moved here or below? Image puts it parallel to solution/problem or replacing Execution)
                                                 Image shows "Solution Offered" then "Technologies". "Execution" is missing.
                                                 We will put "Discovery/Solution steps" here as usual.
                                             */}
-                                            <ul className="space-y-2 text-gray-600 text-sm list-disc pl-5 mb-4">
-                                                {activeCaseStudy.solution.discovery.map((item, idx) => (
-                                                    <li key={idx} dangerouslySetInnerHTML={{ __html: item.replace("BluePrism", "<span class='text-primary font-medium'>BluePrism</span>") }}></li>
-                                                ))}
-                                            </ul>
+                                                <ul className="space-y-2 text-gray-600 text-sm list-disc pl-5 mb-4">
+                                                    {activeCaseStudy.solution.discovery.map((item, idx) => (
+                                                        <li key={idx} dangerouslySetInnerHTML={{ __html: item.replace("BluePrism", "<span class='text-primary font-medium'>BluePrism</span>") }}></li>
+                                                    ))}
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    {/* Technologies Section (Replaces Execution for Mortgage App) */}
-                                    {activeCaseStudy.technologies && (
-                                        <div className="mb-8 bg-gray-50 p-6 rounded-xl border border-gray-100">
-                                            <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                                                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                        {/* Technologies Section (Replaces Execution for Mortgage App) */}
+                                        {activeCaseStudy.technologies && (
+                                            <div className="mb-8 bg-gray-50 p-6 rounded-xl border border-gray-100">
+                                                <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                                    <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                                    </svg>
+                                                    Technologies
+                                                </h3>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {activeCaseStudy.technologies.map((tech, idx) => (
+                                                        <span key={idx} className="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full font-medium shadow-sm">
+                                                            {tech}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {/* Execution (Only if present) */}
+                                        {activeCaseStudy.execution && (
+                                            <div className="mb-8 bg-gray-50 p-6 rounded-xl border border-gray-100">
+                                                <h3 className="text-lg font-bold text-gray-900 mb-3">Execution</h3>
+                                                <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 text-gray-600 text-sm list-disc pl-5">
+                                                    {activeCaseStudy.execution.map((item, idx) => (
+                                                        <li key={idx} dangerouslySetInnerHTML={{ __html: item.replace("persona’s", "personas") }}></li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+
+                                        {/* Value Add */}
+                                        <div>
+                                            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                                                Value Add
+                                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                                                 </svg>
-                                                Technologies
                                             </h3>
-                                            <div className="flex flex-wrap gap-2">
-                                                {activeCaseStudy.technologies.map((tech, idx) => (
-                                                    <span key={idx} className="bg-white border border-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full font-medium shadow-sm">
-                                                        {tech}
-                                                    </span>
+                                            <div className={`grid sm:grid-cols-${activeCaseStudy.valueAdd.metrics.length > 2 ? '2 lg:grid-cols-4' : '2'} gap-4`}>
+                                                {activeCaseStudy.valueAdd.metrics.map((metric, idx) => (
+                                                    <div key={idx} className={`${metric.highlight ? 'bg-green-50' : 'bg-primary/5'} p-4 rounded-lg flex flex-col gap-1`}>
+                                                        <div className={`text-lg font-bold ${metric.highlight ? 'text-green-600' : 'text-primary'}`}>
+                                                            {metric.value}
+                                                        </div>
+                                                        <div className="text-xs text-gray-700 font-medium leading-snug">
+                                                            {metric.description}
+                                                        </div>
+                                                    </div>
                                                 ))}
                                             </div>
                                         </div>
-                                    )}
-
-                                    {/* Execution (Only if present) */}
-                                    {activeCaseStudy.execution && (
-                                        <div className="mb-8 bg-gray-50 p-6 rounded-xl border border-gray-100">
-                                            <h3 className="text-lg font-bold text-gray-900 mb-3">Execution</h3>
-                                            <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 text-gray-600 text-sm list-disc pl-5">
-                                                {activeCaseStudy.execution.map((item, idx) => (
-                                                    <li key={idx} dangerouslySetInnerHTML={{ __html: item.replace("persona’s", "personas") }}></li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-
-                                    {/* Value Add */}
-                                    <div>
-                                        <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                                            Value Add
-                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                                            </svg>
-                                        </h3>
-                                        <div className={`grid sm:grid-cols-${activeCaseStudy.valueAdd.metrics.length > 2 ? '2 lg:grid-cols-4' : '2'} gap-4`}>
-                                            {activeCaseStudy.valueAdd.metrics.map((metric, idx) => (
-                                                <div key={idx} className={`${metric.highlight ? 'bg-green-50' : 'bg-primary/5'} p-4 rounded-lg flex flex-col gap-1`}>
-                                                    <div className={`text-lg font-bold ${metric.highlight ? 'text-green-600' : 'text-primary'}`}>
-                                                        {metric.value}
-                                                    </div>
-                                                    <div className="text-xs text-gray-700 font-medium leading-snug">
-                                                        {metric.description}
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
                 </div>
             </section>
         </div>

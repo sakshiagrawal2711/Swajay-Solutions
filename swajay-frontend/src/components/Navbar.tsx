@@ -41,23 +41,19 @@ const Navbar = () => {
             }
         },
         {
-            name: 'AI',
+            name: 'AI & Automation',
             path: '/ai',
             megaMenu: true,
             columns: [
                 {
-                    title: "Artificial Intelligence",
+                    title: "Artificial Intelligence           ",
                     items: ["Machine Learning", "Deep Learning", "NLP Solutions", "Computer Vision"]
                 },
                 {
-                    title: "AI Agents",
+                    title: "Mortgage Title Automation Strategy",
                     items: ["Customer Support Bots", "Process Automation", "Personal Assistants", "Data Analysis Agents"]
                 }
             ],
-            featured: {
-                title: "Next Gen AI",
-                text: "Swajay Solutions named top innovator in Generative AI technology."
-            }
         },
         { name: 'Case Studies', path: '/case-studies' },
         { name: 'Contact', path: '/contact' },
@@ -78,7 +74,7 @@ const Navbar = () => {
                     <span className="self-center text-lg md:text-2xl font-semibold whitespace-nowrap text-white">Swajay Solutions</span>
                 </NavLink>
                 <div className="flex md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse relative z-50 shrink-0">
-                    <NavLink to="/contact" className="hidden md:block">
+                    <NavLink to="/contact" className="hidden md:block" onClick={() => window.scrollTo(0, 0)}>
                         <button type="button" className="text-white bg-gradient-to-r from-primary to-accent hover:from-highlight hover:to-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-full text-xs md:text-sm px-4 py-2 md:px-6 md:py-2.5 text-center cursor-pointer transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-0.5 whitespace-nowrap">
                             Request a Demo
                         </button>
@@ -195,7 +191,7 @@ const Navbar = () => {
                         ))}
                         {/* Mobile Only CTA Button */}
                         <li className="mt-4 md:hidden pb-4">
-                            <NavLink to="/contact" className="block w-full" onClick={() => setIsOpen(false)}>
+                            <NavLink to="/contact" className="block w-full" onClick={() => { setIsOpen(false); window.scrollTo(0, 0); }}>
                                 <button type="button" className="w-full text-white bg-gradient-to-r from-primary to-accent hover:from-highlight hover:to-primary font-bold rounded-lg text-sm px-5 py-3 text-center transition-all duration-300 shadow-md">
                                     Request a Demo
                                 </button>

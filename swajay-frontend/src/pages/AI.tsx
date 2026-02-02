@@ -4,21 +4,21 @@ import PageHero from '../components/PageHero';
 
 const AI = () => {
     return (
-        <div className="min-h-screen bg-transparent text-white">
+        <div className="min-h-screen bg-blue-50">
             <PageHero
                 title="AI & Automation"
                 subtitle="We apply specific AI solutions to mission-critical mortgage and title processes, transforming time-consuming tasks into compliant, automated workflows"
             />
 
             {/* Eliminating Manual Bottlenecks Section */}
-            <section className="py-24 px-6 md:px-16 bg-gradient-to-b from-transparent to-slate-900/50">
+            <section className="py-24 px-6 md:px-16 bg-blue-50">
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-16">
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-4xl font-bold text-white mb-4"
+                            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
                         >
                             Eliminating Manual Bottlenecks
                         </motion.h2>
@@ -27,7 +27,7 @@ const AI = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-gray-300 text-lg"
+                            className="text-gray-600 text-lg"
                         >
                             Real-world AI implementations delivering measurable business impact
                         </motion.p>
@@ -103,19 +103,19 @@ const AI = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="bg-slate-800/50 p-8 rounded-xl border border-white/10 shadow-lg backdrop-blur-md hover:bg-slate-800/70 hover:border-primary/30 transition-all duration-300 group flex flex-col"
+                                className="bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col"
                             >
                                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                                     {item.icon}
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                                <p className="text-gray-300 mb-6 leading-relaxed text-sm flex-grow">
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                                <p className="text-gray-600 mb-6 leading-relaxed text-sm flex-grow">
                                     {item.desc}
                                 </p>
 
-                                <div className="pt-6 border-t border-white/10 mt-auto">
+                                <div className="pt-6 border-t border-gray-100 mt-auto">
                                     <p className="text-xs font-bold text-primary uppercase tracking-wider mb-2">Measurable Impact</p>
-                                    <p className="text-sm font-medium text-gray-200">{item.impact}</p>
+                                    <p className="text-sm font-medium text-gray-700">{item.impact}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -124,14 +124,14 @@ const AI = () => {
             </section>
 
             {/* Swajay's Approach Section */}
-            <section className="py-24 px-6 md:px-16 bg-slate-900/30">
+            <section className="py-24 px-6 md:px-16 bg-blue-50">
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-16 text-center">
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-4xl font-bold text-white mb-4"
+                            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
                         >
                             Swajay's Approach
                         </motion.h2>
@@ -140,7 +140,7 @@ const AI = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-gray-300 text-lg max-w-4xl mx-auto"
+                            className="text-gray-600 text-lg max-w-4xl mx-auto"
                         >
                             Accelerators + Squads: Building faster and smarter through specialized teams, proven methodologies, and outcome-driven collaboration
                         </motion.p>
@@ -165,10 +165,10 @@ const AI = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="bg-slate-800/50 p-10 rounded-xl border border-white/10 shadow-lg backdrop-blur-md hover:bg-slate-800/70 hover:border-primary/30 transition-all duration-300"
+                                className="bg-white p-10 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300"
                             >
-                                <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-                                <p className="text-gray-300 mb-8 leading-relaxed text-lg">
+                                <h3 className="text-2xl font-bold text-gray-900 mb-4">{item.title}</h3>
+                                <p className="text-gray-600 mb-8 leading-relaxed text-lg">
                                     {item.desc}
                                 </p>
                                 <p className="text-primary font-medium text-base">

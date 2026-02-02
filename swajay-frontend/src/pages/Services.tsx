@@ -18,50 +18,43 @@ const Services = () => {
         }
     }, [location.search]);
 
-    const toggleTab = () => {
-        const newTab = activeTab === 'mortgage' ? 'technology' : 'mortgage';
-        setActiveTab(newTab);
-        navigate(`/services?tab=${newTab}`, { replace: true });
-    };
+
 
     return (
-        <div className="min-h-screen bg-[#0B1221] relative">
+        <div className="min-h-screen bg-blue-50 relative">
             <PageHero
                 title="Services"
                 subtitle="We move beyond traditional BPO by embedding advanced technology—from proprietary applications to sophisticated AI models—directly into your workflows"
             />
 
-            {/* Floating Toggle Button - Desktop */}
-            <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-40 hidden md:block">
-                <button
-                    onClick={toggleTab}
-                    className="bg-primary text-white font-bold py-4 px-2 rounded-l-xl shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:bg-[#2563EB] transition-all duration-300 flex flex-col items-center gap-2 group border border-white/20 backdrop-blur-md"
-                >
-                    <span className="writing-vertical-lr uppercase tracking-wider text-sm shadow-sm">
-                        {activeTab === 'mortgage' ? 'View Technology Excellence' : 'View Mortgage Capabilities'}
-                    </span>
-                    <svg
-                        className={`w-6 h-6 transition-transform duration-500 ${activeTab === 'mortgage' ? 'rotate-0' : 'rotate-180'}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+            {/* Inline Tabs Navigation */}
+            <div className="max-w-7xl mx-auto px-6 md:px-16 -mt-8 relative z-30">
+                <div className="bg-white p-2 rounded-2xl shadow-lg border border-gray-100 max-w-2xl mx-auto flex">
+                    <button
+                        onClick={() => {
+                            setActiveTab('mortgage');
+                            navigate('/services?tab=mortgage', { replace: true });
+                        }}
+                        className={`flex-1 py-3 md:py-4 px-4 rounded-xl font-bold text-sm md:text-base transition-all duration-300 flex items-center justify-center gap-2 ${activeTab === 'mortgage' ? 'bg-primary text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
                     >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </button>
-            </div>
-
-            {/* Mobile Toggle Button (Sticky Bottom) */}
-            <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40 md:hidden w-[90%] text-center">
-                <button
-                    onClick={toggleTab}
-                    className="bg-primary text-white font-bold py-3 px-6 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:bg-[#2563EB] transition-all duration-300 w-full flex items-center justify-center gap-2 border border-white/20 backdrop-blur-md"
-                >
-                    <span>{activeTab === 'mortgage' ? 'View Tech Capabilities' : 'View Mortgage Caps'}</span>
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </button>
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        Mortgage Capabilities
+                    </button>
+                    <button
+                        onClick={() => {
+                            setActiveTab('technology');
+                            navigate('/services?tab=technology', { replace: true });
+                        }}
+                        className={`flex-1 py-3 md:py-4 px-4 rounded-xl font-bold text-sm md:text-base transition-all duration-300 flex items-center justify-center gap-2 ${activeTab === 'technology' ? 'bg-primary text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
+                    >
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        Technology Excellence
+                    </button>
+                </div>
             </div>
 
             <AnimatePresence mode='wait'>
@@ -74,13 +67,13 @@ const Services = () => {
                         transition={{ duration: 0.3 }}
                     >
                         {/* Mortgage Functional Capabilities Section */}
-                        <section className="py-24 px-6 md:px-16 bg-gradient-to-b from-[#0F172A] to-[#1E293B] min-h-[60vh]">
+                        <section className="py-24 px-6 md:px-16 bg-blue-50 min-h-[60vh]">
                             <div className="max-w-7xl mx-auto">
                                 <div className="mb-16">
-                                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                                         Mortgage Functional Capabilities
                                     </h2>
-                                    <p className="text-gray-300 text-lg">
+                                    <p className="text-gray-600 text-lg">
                                         End-to-end mortgage processing with AI-powered efficiency
                                     </p>
                                 </div>
@@ -155,13 +148,13 @@ const Services = () => {
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ delay: index * 0.1 }}
-                                            className="bg-white/5 p-8 rounded-xl border border-white/10 shadow-lg backdrop-blur-md hover:bg-white/10 transition-all duration-300 group"
+                                            className="bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group"
                                         >
                                             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors text-primary">
                                                 {item.icon}
                                             </div>
-                                            <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
-                                            <p className="text-gray-300 mb-6 leading-relaxed text-sm">
+                                            <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
+                                            <p className="text-gray-600 mb-6 leading-relaxed text-sm">
                                                 {item.desc}
                                             </p>
 
@@ -169,7 +162,7 @@ const Services = () => {
                                                 <p className="text-xs font-bold text-primary uppercase tracking-wider mb-3">Key Benefits</p>
                                                 <ul className="space-y-2">
                                                     {item.benefits.map((benefit, i) => (
-                                                        <li key={i} className="flex items-center gap-2 text-sm text-gray-400 font-medium">
+                                                        <li key={i} className="flex items-center gap-2 text-sm text-gray-500 font-medium">
                                                             <div className="w-1.5 h-1.5 rounded-full bg-primary/60"></div>
                                                             {benefit}
                                                         </li>
@@ -191,13 +184,13 @@ const Services = () => {
                         transition={{ duration: 0.3 }}
                     >
                         {/* Blueprint of Technology Excellence Section */}
-                        <section className="py-24 px-6 md:px-16 bg-[#1E293B] min-h-[60vh]">
+                        <section className="py-24 px-6 md:px-16 bg-blue-50 min-h-[60vh]">
                             <div className="max-w-7xl mx-auto">
                                 <div className="mb-16">
-                                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                                         Blueprint of Technology Excellence
                                     </h2>
-                                    <p className="text-gray-300 text-lg max-w-4xl">
+                                    <p className="text-gray-600 text-lg max-w-4xl">
                                         Swajay leverages its multi-industry expertise to deliver secure, scalable, and outcome-driven digital solutions
                                     </p>
                                 </div>
@@ -208,6 +201,7 @@ const Services = () => {
                                             title: "Engineering Services",
                                             desc: "Custom, user-centric software that streamlines interaction and scaling.",
                                             services: ["Web & mobile application development", "Technology consulting", "Quality engineering"],
+                                            link: "/case-studies?study=mortgage-lender-app#study-details",
                                             icon: (
                                                 <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -251,19 +245,25 @@ const Services = () => {
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ delay: index * 0.1 }}
-                                            className="bg-white/5 p-8 rounded-xl border border-white/10 shadow-lg backdrop-blur-md hover:bg-white/10 transition-all duration-300 group"
+                                            onClick={() => {
+                                                if ((item as any).link) {
+                                                    navigate((item as any).link);
+                                                    window.scrollTo(710, 710);
+                                                }
+                                            }}
+                                            className={`bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group ${(item as any).link ? 'cursor-pointer hover:border-primary/50' : ''}`}
                                         >
                                             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors text-primary">
                                                 {item.icon}
                                             </div>
-                                            <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                            <p className="text-gray-300 mb-6 leading-relaxed text-sm">
+                                            <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                                            <p className="text-gray-600 mb-6 leading-relaxed text-sm">
                                                 {item.desc}
                                             </p>
 
                                             <ul className="space-y-2">
                                                 {item.services.map((service, i) => (
-                                                    <li key={i} className="flex items-center gap-2 text-sm text-gray-400 font-medium">
+                                                    <li key={i} className="flex items-center gap-2 text-sm text-gray-500 font-medium">
                                                         <div className="w-1.5 h-1.5 rounded-full bg-primary/60"></div>
                                                         {service}
                                                     </li>
