@@ -32,13 +32,9 @@ const Navbar = () => {
                 },
                 {
                     title: "Technology Excellence",
-                    items: ["Engineering Services", "AI & Advanced Automation", "Data & Business Intelligence", "Secure Cloud & Integrationt"]
+                    items: ["Engineering Services", "AI & Advanced Automation", "Data & Business Intelligence", "Secure Cloud & Integration"]
                 }
-            ],
-            featured: {
-                title: "Featured Service",
-                text: "Enterprise-grade AI solutions for modern businesses."
-            }
+            ]
         },
         {
             name: 'AI & Automation',
