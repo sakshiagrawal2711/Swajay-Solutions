@@ -126,7 +126,7 @@ const Navbar = () => {
                                         <div className="hidden md:block absolute left-0 top-full w-[600px] lg:w-[800px] bg-secondary border-t border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 -z-10 h-auto rounded-b-xl overflow-hidden -left-20 lg:-left-40">
                                             <div className="p-8 grid grid-cols-12 gap-8">
                                                 {link.columns?.map((col, idx) => (
-                                                    <div key={idx} className="col-span-4">
+                                                    <div key={idx} className="col-span-6">
                                                         <NavLink
                                                             to={col.title === "Mortgage Functional Capabilities" ? "/services?tab=mortgage" : "/services?tab=technology"}
                                                             onClick={() => {
