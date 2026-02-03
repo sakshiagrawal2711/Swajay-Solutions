@@ -56,6 +56,7 @@ const Navbar = () => {
             ],
         },
         { name: 'Case Studies', path: '/case-studies' },
+        { name: 'Solutions', path: '/services' },
         { name: 'Contact', path: '/contact' },
     ];
 
@@ -67,7 +68,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-50 top-0 start-0 border-b transition-all duration-300 ${scrolled ? 'bg-secondary/95 backdrop-blur-md border-white/10 shadow-lg' : 'bg-secondary/50 backdrop-blur-sm border-white/5'}`}>
+        <nav className={`sticky w-full z-50 top-0 start-0 border-b transition-all duration-300 ${scrolled ? 'bg-[#0F172A]/95 backdrop-blur-md border-gray-200 shadow-sm' : 'bg-[#0F172A] border-transparent'}`}>
             <div className="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto p-4 gap-4">
                 <NavLink to="/" className="flex items-center space-x-2 md:space-x-3 rtl:space-x-reverse relative z-50 shrink-0">
                     <img src="/Swajay Logo.png" className="h-8 md:h-10" alt="Swajay Solutions Logo" />
@@ -75,8 +76,8 @@ const Navbar = () => {
                 </NavLink>
                 <div className="flex md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse relative z-50 shrink-0">
                     <NavLink to="/contact" className="hidden md:block" onClick={() => window.scrollTo(0, 0)}>
-                        <button type="button" className="text-white bg-gradient-to-r from-primary to-accent hover:from-highlight hover:to-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-full text-xs md:text-sm px-4 py-2 md:px-6 md:py-2.5 text-center cursor-pointer transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-0.5 whitespace-nowrap">
-                            Request a Demo
+                        <button type="button" className="text-white bg-primary hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-bold rounded-lg text-xs md:text-sm px-4 py-2 md:px-6 md:py-2.5 text-center cursor-pointer transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transform hover:-translate-y-0.5 whitespace-nowrap">
+                            Get Started
                         </button>
                     </NavLink>
                     <button

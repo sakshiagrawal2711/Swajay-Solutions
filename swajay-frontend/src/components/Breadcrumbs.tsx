@@ -17,7 +17,7 @@ const Breadcrumbs = ({ className = "" }: { className?: string }) => {
         <nav className={`flex items-center text-sm font-medium mb-4 ${className}`} aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
                 <li className="inline-flex items-center">
-                    <Link to="/" className="text-gray-400 hover:text-white transition-colors">
+                    <Link to="/" className="text-gray-500 hover:text-primary transition-colors">
                         Home
                     </Link>
                 </li>
@@ -31,9 +31,9 @@ const Breadcrumbs = ({ className = "" }: { className?: string }) => {
                             <div className="flex items-center">
                                 <svg className="w-3 h-3 text-orange-500 mx-1 md:mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7"></path></svg>
                                 {isLast ? (
-                                    <span className="text-white capitalize">{name}</span>
+                                    <span className="text-slate-900 font-bold capitalize">{name}</span>
                                 ) : (
-                                    <Link to={to} className="text-gray-400 hover:text-white transition-colors capitalize">
+                                    <Link to={to} className="text-gray-500 hover:text-primary transition-colors capitalize">
                                         {name}
                                     </Link>
                                 )}
