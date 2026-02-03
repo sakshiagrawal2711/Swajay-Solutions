@@ -150,16 +150,7 @@ const Navbar = () => {
                                                         </ul>
                                                     </div>
                                                 ))}
-                                                {link.featured && (
-                                                    <div className="col-span-4 bg-white/5 rounded-xl p-6 border border-white/10 ml-4">
-                                                        <h3 className="text-white font-bold text-lg mb-2">FEATURED</h3>
-                                                        <div className="h-px w-12 bg-primary mb-4"></div>
-                                                        <h4 className="text-lg text-white font-semibold mb-2">{link.featured.title}</h4>
-                                                        <p className="text-gray-400 text-xs mb-4 leading-relaxed">
-                                                            {link.featured.text}
-                                                        </p>
-                                                    </div>
-                                                )}
+
                                             </div>
                                         </div>
 
