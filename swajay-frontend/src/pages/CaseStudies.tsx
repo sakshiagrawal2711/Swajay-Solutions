@@ -233,6 +233,7 @@ const CaseStudies = () => {
             <PageHero
                 title="Case Studies"
                 subtitle="Real-world examples of how we help businesses transform and succeed through technology and innovation."
+                label="Success Stories"
             />
 
             <section className="py-12 px-6 md:px-16">

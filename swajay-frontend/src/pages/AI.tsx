@@ -8,6 +8,7 @@ const AI = () => {
             <PageHero
                 title="AI & Automation"
                 subtitle="We apply specific AI solutions to mission-critical mortgage and title processes, transforming time-consuming tasks into compliant, automated workflows"
+                label="Future Tech"
             />
 
             {/* Eliminating Manual Bottlenecks Section */}

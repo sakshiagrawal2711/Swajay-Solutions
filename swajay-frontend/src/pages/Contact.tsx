@@ -8,6 +8,7 @@ const Contact = () => {
             <PageHero
                 title="Get in Touch"
                 subtitle="Ready to transform your business? Let's start the conversation and explore how we can help you achieve your goals."
+                label="Contact Us"
             />
 
             <section className="py-20 px-6 relative z-10">

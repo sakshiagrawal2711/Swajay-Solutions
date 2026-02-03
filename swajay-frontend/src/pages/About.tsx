@@ -26,6 +26,7 @@ const About = () => {
             <PageHero
                 title="About Swajay"
                 subtitle="Decades of expertise, modern innovation, and a commitment to solving real business challenges"
+                label="About Us"
             />
 
             {/* Mission Section */}

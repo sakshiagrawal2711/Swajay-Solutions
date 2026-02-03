@@ -25,6 +25,7 @@ const Services = () => {
             <PageHero
                 title="Services"
                 subtitle="We move beyond traditional BPO by embedding advanced technology—from proprietary applications to sophisticated AI models—directly into your workflows"
+                label="Our Services"
             />
 
             {/* Inline Tabs Navigation */}
