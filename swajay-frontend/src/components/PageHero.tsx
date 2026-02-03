@@ -20,7 +20,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, label, image, clas
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02]"></div>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-screen-xl mx-auto px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                     {/* Left Column: Text Content */}
