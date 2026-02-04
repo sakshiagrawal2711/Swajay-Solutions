@@ -42,12 +42,12 @@ const Navbar = () => {
             megaMenu: true,
             columns: [
                 {
-                    title: "Artificial Intelligence           ",
-                    items: ["Machine Learning", "Deep Learning", "NLP Solutions", "Computer Vision"]
+                    title: "Artificial Intelligence",
+                    items: ["Intelligent Document Processing", "Agentic AI for Order Management", "RPA for Report Generation"]
                 },
                 {
                     title: "Mortgage Title Automation Strategy",
-                    items: ["Customer Support Bots", "Process Automation", "Personal Assistants", "Data Analysis Agents"]
+                    items: ["Target Operating Model"]
                 }
             ],
         },
@@ -63,6 +63,22 @@ const Navbar = () => {
         }
     };
 
+    const getColumnPath = (title: string) => {
+        const trimmedTitle = title.trim();
+        if (trimmedTitle === "Mortgage Functional Capabilities") return "/services?tab=mortgage";
+        if (trimmedTitle === "Technology Excellence") return "/services?tab=technology";
+        if (trimmedTitle === "Artificial Intelligence") return "/ai?tab=ai";
+        if (trimmedTitle === "Mortgage Title Automation Strategy") return "/ai?tab=strategy";
+        return "#";
+    };
+
+    const getItemPath = (columnTitle: string, itemName: string) => {
+        const basePath = getColumnPath(columnTitle);
+        if (basePath === "#") return "#";
+        const slug = itemName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        return `${basePath}#${slug}`;
+    };
+
     return (
         <nav className={`sticky w-full z-50 top-0 start-0 border-b transition-all duration-300 ${scrolled ? 'bg-[#0F172A]/95 backdrop-blur-md border-gray-200 shadow-sm' : 'bg-[#0F172A] border-transparent'}`}>
             <div className="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto p-4 gap-4">
@@ -72,7 +88,7 @@ const Navbar = () => {
                 </NavLink>
                 <div className="flex md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse relative z-50 shrink-0">
                     <NavLink to="/contact" className="hidden md:block" onClick={() => window.scrollTo(0, 0)}>
-                        <button type="button" className="text-white bg-primary hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-bold rounded-lg text-xs md:text-sm px-4 py-2 md:px-6 md:py-2.5 text-center cursor-pointer transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transform hover:-translate-y-0.5 whitespace-nowrap">
+                        <button type="button" className="text-white bg-primary hover:bg-blue-600 hover:scale-105 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-xs md:text-sm px-4 py-2 md:px-6 md:py-2.5 text-center cursor-pointer transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transform whitespace-nowrap">
                             Get Started
                         </button>
                     </NavLink>
@@ -90,8 +106,8 @@ const Navbar = () => {
                         </svg>
                     </button>
                 </div>
-                <div className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${isOpen ? 'absolute top-full left-0 bg-secondary border-b border-t border-white/10 shadow-2xl p-4 block' : 'hidden'} md:static md:bg-transparent md:border-none md:shadow-none md:p-0`} id="navbar-sticky">
-                    <ul className="flex flex-col font-medium rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:bg-transparent">
+                <div className={`items-center justify-between w-full md:flex md:w-auto md:order-1 absolute md:relative top-full left-0 bg-[#0F172A] md:bg-transparent shadow-lg md:shadow-none transition-all duration-300 p-4 md:p-0 border-t border-white/10 md:border-none ${isOpen ? 'max-h-[80vh] overflow-y-auto opacity-100 visible' : 'max-h-0 md:max-h-none opacity-0 md:opacity-100 invisible md:visible overflow-hidden md:overflow-visible'}`} id="navbar-sticky">
+                    <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 relative">
                         {links.map((link) => (
                             <li key={link.name} className="group relative border-b border-white/5 md:border-none last:border-none">
                                 <div className="flex items-center justify-between w-full">
@@ -128,7 +144,7 @@ const Navbar = () => {
                                                 {link.columns?.map((col, idx) => (
                                                     <div key={idx} className="col-span-6">
                                                         <NavLink
-                                                            to={col.title === "Mortgage Functional Capabilities" ? "/services?tab=mortgage" : "/services?tab=technology"}
+                                                            to={getColumnPath(col.title)}
                                                             onClick={() => {
                                                                 setIsOpen(false);
                                                                 // Force reload if already on the page to trigger useEffect or just let NavLink handle it
@@ -142,9 +158,15 @@ const Navbar = () => {
                                                         <ul className="space-y-3">
                                                             {col.items.map((item, itemIdx) => (
                                                                 <li key={itemIdx}>
-                                                                    <a href="#" className="block text-gray-300 hover:text-primary transition-colors duration-200 text-sm">
+                                                                    <NavLink
+                                                                        to={getItemPath(col.title, item)}
+                                                                        className="block text-gray-300 hover:text-primary transition-colors duration-200 text-sm"
+                                                                        onClick={() => {
+                                                                            setIsOpen(false);
+                                                                        }}
+                                                                    >
                                                                         {item}
-                                                                    </a>
+                                                                    </NavLink>
                                                                 </li>
                                                             ))}
                                                         </ul>

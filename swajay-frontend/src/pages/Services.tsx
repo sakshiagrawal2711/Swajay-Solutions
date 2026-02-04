@@ -18,7 +18,21 @@ const Services = () => {
         }
     }, [location.search]);
 
+    const createSlug = (text: string) => {
+        return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    };
 
+    useEffect(() => {
+        if (location.hash) {
+            const id = location.hash.replace('#', '');
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 500); // Small delay to ensure render
+        }
+    }, [location.hash, activeTab]);
 
     return (
         <div className="min-h-screen bg-blue-50 relative">
@@ -145,6 +159,7 @@ const Services = () => {
                                     ].map((item, index) => (
                                         <motion.div
                                             key={index}
+                                            id={createSlug(item.title)}
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
@@ -242,6 +257,7 @@ const Services = () => {
                                     ].map((item, index) => (
                                         <motion.div
                                             key={index}
+                                            id={createSlug(item.title)}
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}

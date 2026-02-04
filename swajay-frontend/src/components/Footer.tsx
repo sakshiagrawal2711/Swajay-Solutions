@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 const Footer = () => {
     return (
         <footer className="bg-[#0F172A] text-white py-12 border-t border-white/10">
@@ -33,10 +35,10 @@ const Footer = () => {
                     <div>
                         <h4 className="text-white font-semibold mb-4">Capabilities</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
-                            <li><a href="#" className="hover:text-primary transition-colors">Engineering Services</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Mortgage Functional Capabilities</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">AI & Automation</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Case Studies</a></li>
+                            <li><NavLink to="/services" className="hover:text-primary transition-colors">Services</NavLink></li>
+                            <li><NavLink to="/ai" className="hover:text-primary transition-colors">AI & Automation</NavLink></li>
+                            <li><NavLink to="/case-studies" className="hover:text-primary transition-colors">Case Studies</NavLink></li>
+                            <li><NavLink to="/solutions" className="hover:text-primary transition-colors">Solutions</NavLink></li>
                         </ul>
                     </div>
 
