@@ -81,8 +81,8 @@ const Footer = () => {
                 <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
                     <p>&copy; 2026 Swajay Business Solutions, LLC. All rights reserved.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
-                        <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+                        <NavLink to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</NavLink>
+                        <NavLink to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</NavLink>
                     </div>
                 </div>
             </div>

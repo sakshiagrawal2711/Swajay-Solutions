@@ -13,6 +13,8 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import CaseStudies from './pages/CaseStudies';
 import Solutions from './pages/Solutions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -53,6 +55,8 @@ const AnimatedRoutes = () => {
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
         <Route path="/case-studies" element={<PageWrapper><CaseStudies /></PageWrapper>} />
         <Route path="/solutions" element={<PageWrapper><Solutions /></PageWrapper>} />
+        <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
+        <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
