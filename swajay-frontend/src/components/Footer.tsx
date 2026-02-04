@@ -31,12 +31,12 @@ const Footer = () => {
 
                     {/* Column 2: Services */}
                     <div>
-                        <h4 className="text-white font-semibold mb-4">Services</h4>
+                        <h4 className="text-white font-semibold mb-4">Capabilities</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
                             <li><a href="#" className="hover:text-primary transition-colors">Engineering Services</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">AI & Advanced Automation</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Data & Business Intelligence</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Secure Cloud & Integration</a></li>
+                            <li><a href="#" className="hover:text-primary transition-colors">Mortgage Functional Capabilities</a></li>
+                            <li><a href="#" className="hover:text-primary transition-colors">AI & Automation</a></li>
+                            <li><a href="#" className="hover:text-primary transition-colors">Case Studies</a></li>
                         </ul>
                     </div>
 

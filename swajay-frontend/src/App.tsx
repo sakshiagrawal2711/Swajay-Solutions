@@ -12,6 +12,7 @@ import AI from './pages/AI';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import CaseStudies from './pages/CaseStudies';
+import Solutions from './pages/Solutions';
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -51,6 +52,7 @@ const AnimatedRoutes = () => {
         <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
         <Route path="/case-studies" element={<PageWrapper><CaseStudies /></PageWrapper>} />
+        <Route path="/solutions" element={<PageWrapper><Solutions /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );

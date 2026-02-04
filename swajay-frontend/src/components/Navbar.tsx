@@ -52,7 +52,7 @@ const Navbar = () => {
             ],
         },
         { name: 'Case Studies', path: '/case-studies' },
-        { name: 'Solutions', path: '/services' },
+        { name: 'Solutions', path: '/solutions' },
         { name: 'Contact', path: '/contact' },
     ];
 
