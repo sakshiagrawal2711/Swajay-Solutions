@@ -3,6 +3,9 @@ import { useEffect, useRef } from "react";
 
 
 import PageHero from '../components/PageHero';
+import partnerPhoto from '../assets/partner_photo.jpg';
+import nagaraj from '../assets/Nagaraj Srinivasamurthy.jpg';
+import muniraju from '../assets/image1.jpeg';
 
 function Counter({ from = 0, to, duration = 2, suffix = "" }: { from?: number; to: number; duration?: number; suffix?: string }) {
     const count = useMotionValue(from);
@@ -206,13 +209,18 @@ const About = () => {
                         <h3 className="text-2xl font-bold text-gray-900">Leadership</h3>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {[1, 2, 3, 4].map((item) => (
+                        {[
+                            { id: 1, name: "Partner 1", role: "Role / Title", image: muniraju },
+                            { id: 2, name: "Nagaraj Srinivasamurthy", role: "Role / Title", image: nagaraj },
+                            { id: 3, name: "Muniraju S", role: "Role / Title", image: partnerPhoto },
+                            { id: 4, name: "Partner 4", role: "Role / Title", image: null },
+                        ].map((partner) => (
                             <motion.div
-                                key={item}
+                                key={partner.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: item * 0.1 }}
+                                transition={{ delay: partner.id * 0.1 }}
                                 className="group h-[400px] [perspective:1000px]"
                             >
                                 <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
@@ -220,29 +228,37 @@ const About = () => {
                                     <div className="absolute inset-0 h-full w-full bg-white rounded-2xl [backface-visibility:hidden] border border-gray-100 shadow-md">
                                         <div className="h-full w-full flex flex-col">
                                             <div className="flex-1 bg-gray-50 rounded-2xl relative overflow-hidden mb-4 m-2">
-                                                <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-medium">
-                                                    Partner Photo
-                                                </div>
+                                                {partner.image ? (
+                                                    <img
+                                                        src={partner.image}
+                                                        alt={partner.name}
+                                                        className="w-full h-full object-cover object-top"
+                                                    />
+                                                ) : (
+                                                    <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-medium">
+                                                        Partner Photo
+                                                    </div>
+                                                )}
                                                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300"></div>
                                             </div>
                                             <div className="text-center pb-6">
-                                                <h4 className="text-xl font-bold text-gray-900">Partner {item}</h4>
-                                                <p className="text-primary font-medium">Role / Title</p>
+                                                <h4 className="text-xl font-bold text-gray-900">{partner.name}</h4>
+                                                <p className="text-primary font-medium">{partner.role}</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Back Face */}
                                     <div className="absolute inset-0 h-full w-full bg-gray-50 rounded-2xl p-8 text-gray-900 [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col items-center justify-center text-center shadow-xl border border-gray-200">
-                                        <h4 className="text-xl font-bold mb-2">Partner {item}</h4>
-                                        <p className="text-primary text-sm mb-6">Role / Title</p>
+                                        <h4 className="text-xl font-bold mb-2">{partner.name}</h4>
+                                        <p className="text-primary text-sm mb-6">{partner.role}</p>
 
                                         <div className="space-y-4 w-full">
                                             <div className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100 shadow-sm">
                                                 <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                                 </svg>
-                                                <span className="text-sm font-medium text-gray-600">partner{item}@swajay.com</span>
+                                                <span className="text-sm font-medium text-gray-600">partner{partner.id}@swajay.com</span>
                                             </div>
 
                                             <div className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100 shadow-sm">
