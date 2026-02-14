@@ -7,9 +7,10 @@ interface PageHeroProps {
     label?: string;
     image?: string;
     className?: string;
+    children?: React.ReactNode;
 }
 
-const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, label, image, className = "" }) => {
+const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, label, image, className = "", children }) => {
     return (
         <section className={`relative w-full pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-[#FAFAF9] ${className}`}>
 
@@ -42,9 +43,11 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, label, image, clas
 
                     </div>
 
-                    {/* Right Column: Visual */}
+                    {/* Right Column: Visual or Children */}
                     <div className="relative hidden lg:block">
-                        {image ? (
+                        {children ? (
+                            children
+                        ) : image ? (
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100 transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
                                 <img src={image} alt={title} className="w-full h-auto" />
                             </div>

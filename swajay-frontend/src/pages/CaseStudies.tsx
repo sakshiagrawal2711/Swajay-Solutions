@@ -234,36 +234,44 @@ const CaseStudies = () => {
                 title="Case Studies"
                 subtitle="Real-world examples of how we help businesses transform and succeed through technology and innovation."
                 label="Success Stories"
-            />
+                className="min-h-[600px] flex items-center" // added height helps
+            >
+                <div className="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-white/50 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
-            <section className="py-12 px-6 md:px-16">
-                <div className="max-w-7xl mx-auto">
-                    {/* Navigation Tabs - Grid Layout */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div className="grid grid-cols-1 gap-4 relative z-10">
                         {caseStudies.map((study) => (
                             <button
                                 key={study.id}
                                 onClick={() => setActiveTab(study.id)}
-                                className={`group p-6 rounded-2xl transition-all duration-300 text-left border-2 relative overflow-hidden
+                                className={`group p-5 rounded-2xl transition-all duration-300 text-left border relative overflow-hidden flex items-center gap-5
                                     ${activeTab === study.id
                                         ? 'bg-white border-primary shadow-lg scale-[1.02] z-10'
-                                        : 'bg-white border-transparent hover:border-gray-200 hover:shadow-md'
+                                        : 'bg-white/40 border-transparent hover:bg-white hover:border-gray-200 hover:shadow-md'
                                     }`}
                             >
-                                <div className={`absolute top-0 left-0 w-1 h-full transition-colors duration-300
+                                <div className={`shrink-0 w-1.5 h-14 rounded-full transition-colors duration-300
                                     ${activeTab === study.id ? 'bg-primary' : 'bg-transparent group-hover:bg-gray-200'}`}></div>
 
-                                <span className={`text-xs font-bold uppercase tracking-wider mb-3 block
-                                    ${activeTab === study.id ? 'text-primary' : 'text-gray-400'}`}>
-                                    {study.category}
-                                </span>
-                                <h3 className={`font-bold text-lg leading-snug
-                                    ${activeTab === study.id ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'}`}>
-                                    {study.title}
-                                </h3>
+                                <div>
+                                    <span className={`text-xs font-bold uppercase tracking-wider block mb-1
+                                        ${activeTab === study.id ? 'text-primary' : 'text-gray-500'}`}>
+                                        {study.category}
+                                    </span>
+                                    <h3 className={`font-bold text-lg leading-tight
+                                        ${activeTab === study.id ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'}`}>
+                                        {study.title}
+                                    </h3>
+                                </div>
                             </button>
                         ))}
                     </div>
+                </div>
+            </PageHero>
+
+            <section className="py-12 px-6 md:px-16">
+                <div className="max-w-7xl mx-auto">
+                    {/* Content Display */}
 
                     {/* Content Display */}
                     <div id="study-details" className="scroll-mt-32">
