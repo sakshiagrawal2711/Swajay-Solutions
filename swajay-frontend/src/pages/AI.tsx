@@ -37,11 +37,117 @@ const AI = () => {
 
     return (
         <div className="min-h-screen bg-blue-50 relative">
-            <PageHero
-                title="AI & Automation"
-                subtitle="We apply specific AI solutions to mission-critical mortgage and title processes, transforming time-consuming tasks into compliant, automated workflows"
-                label="Future Tech"
-            />
+            {/* Custom Hero with Diamond Pyramid Diagram */}
+            <section className="relative w-full min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-[#FAFAF9]">
+                {/* Background Layers */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px] mix-blend-multiply opacity-70"></div>
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-100/50 rounded-full blur-[100px] mix-blend-multiply opacity-70"></div>
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02]"></div>
+                </div>
+
+                <div className="max-w-screen-xl mx-auto px-6 relative z-10 w-full">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                        {/* Left Column: Text Content */}
+                        <div className="text-left">
+                            <span className="inline-block text-primary font-bold tracking-widest uppercase text-sm mb-4">
+                                Future Tech
+                            </span>
+
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                                AI & Automation
+                            </h1>
+
+                            <p className="text-lg text-slate-600 max-w-xl font-medium leading-relaxed mb-8">
+                                We apply specific AI solutions to mission-critical mortgage and title processes, transforming time-consuming tasks into compliant, automated workflows
+                            </p>
+                        </div>
+
+                        {/* Right Column: Three Diamond Pyramid Diagram */}
+                        <div className="relative hidden lg:flex items-center justify-center">
+                            <div className="relative w-full max-w-md py-8">
+                                {/* SVG Diamond Pyramid - Tighter spacing */}
+                                <svg viewBox="0 0 400 350" className="w-full h-auto drop-shadow-2xl">
+                                    <defs>
+                                        {/* Gradients for each diamond */}
+                                        <linearGradient id="diamond1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style={{ stopColor: '#374151', stopOpacity: 1 }} />
+                                            <stop offset="100%" style={{ stopColor: '#4b5563', stopOpacity: 1 }} />
+                                        </linearGradient>
+                                        <linearGradient id="diamond2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style={{ stopColor: '#4b5563', stopOpacity: 1 }} />
+                                            <stop offset="100%" style={{ stopColor: '#6b7280', stopOpacity: 1 }} />
+                                        </linearGradient>
+                                        <linearGradient id="diamond3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style={{ stopColor: '#6b7280', stopOpacity: 1 }} />
+                                            <stop offset="100%" style={{ stopColor: '#9ca3af', stopOpacity: 1 }} />
+                                        </linearGradient>
+
+                                        {/* Shadow filter */}
+                                        <filter id="diamondShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                            <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+                                            <feOffset dx="0" dy="6" result="offsetblur" />
+                                            <feComponentTransfer>
+                                                <feFuncA type="linear" slope="0.4" />
+                                            </feComponentTransfer>
+                                            <feMerge>
+                                                <feMergeNode />
+                                                <feMergeNode in="SourceGraphic" />
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+
+                                    {/* Top Left Diamond - Business Objectives */}
+                                    <g filter="url(#diamondShadow)">
+                                        <path
+                                            d="M 120 110 L 170 60 L 220 110 L 170 160 Z"
+                                            fill="url(#diamond1)"
+                                            className="hover:opacity-90 transition-opacity duration-300"
+                                        />
+                                    </g>
+
+                                    {/* Top Right Diamond - Task Automation */}
+                                    <g filter="url(#diamondShadow)">
+                                        <path
+                                            d="M 240 110 L 290 60 L 340 110 L 290 160 Z"
+                                            fill="url(#diamond2)"
+                                            className="hover:opacity-90 transition-opacity duration-300"
+                                        />
+                                    </g>
+
+                                    {/* Bottom Center Diamond - Process Automation */}
+                                    <g filter="url(#diamondShadow)">
+                                        <path
+                                            d="M 180 210 L 230 160 L 280 210 L 230 260 Z"
+                                            fill="url(#diamond3)"
+                                            className="hover:opacity-90 transition-opacity duration-300"
+                                        />
+                                    </g>
+                                </svg>
+
+                                {/* Text Labels positioned above and below */}
+                                {/* Top Left Label - Business Objectives */}
+                                <div className="absolute top-0 left-8 max-w-[150px]">
+                                    <h4 className="font-bold text-gray-900 text-sm mb-1">Business Objectives</h4>
+                                    <p className="text-xs text-gray-600 leading-relaxed">Understand clients, markets, and goals.</p>
+                                </div>
+
+                                {/* Top Right Label - Task Automation */}
+                                <div className="absolute top-0 right-8 max-w-[150px] text-right">
+                                    <h4 className="font-bold text-gray-900 text-sm mb-1">Task Automation</h4>
+                                    <p className="text-xs text-gray-600 leading-relaxed">Extract, validate, update data, and report.</p>
+                                </div>
+
+                                {/* Bottom Center Label - Process Automation */}
+                                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 max-w-[180px] text-center">
+                                    <h4 className="font-bold text-gray-900 text-sm mb-1">Process Automation</h4>
+                                    <p className="text-xs text-gray-600 leading-relaxed">Automate intake through delivery workflows.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Inline Tabs Navigation */}
             <div className="max-w-7xl mx-auto px-6 md:px-16 -mt-8 relative z-30">
@@ -83,7 +189,7 @@ const AI = () => {
                         transition={{ duration: 0.3 }}
                     >
                         {/* Eliminating Manual Bottlenecks Section */}
-                        <section className="py-24 px-6 md:px-16 bg-blue-50 min-h-[60vh]">
+                        <section id="ai-section" className="py-24 px-6 md:px-16 bg-blue-50 min-h-[60vh] scroll-mt-24">
                             <div className="max-w-7xl mx-auto">
                                 <div className="mb-16">
                                     <motion.h2
@@ -280,7 +386,7 @@ const AI = () => {
                         transition={{ duration: 0.3 }}
                     >
                         {/* Target Operating Model Section */}
-                        <section id="target-operating-model" className="py-24 px-6 md:px-16 bg-white">
+                        <section id="strategy-section" className="py-24 px-6 md:px-16 bg-white scroll-mt-24">
                             <div className="max-w-7xl mx-auto">
                                 <div className="mb-16 text-center">
                                     <motion.h2
