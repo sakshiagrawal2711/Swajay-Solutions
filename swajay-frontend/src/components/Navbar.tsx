@@ -81,11 +81,34 @@ const Navbar = () => {
 
     return (
         <nav className={`sticky w-full z-50 top-0 start-0 border-b transition-all duration-300 ${scrolled ? 'bg-[#0F172A]/95 backdrop-blur-md border-gray-200 shadow-sm' : 'bg-[#0F172A] border-transparent'}`}>
-            <div className="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto p-4 gap-4">
-                <NavLink to="/" className="flex items-center space-x-2 md:space-x-3 rtl:space-x-reverse relative z-50 shrink-0">
-                    <img src="/Swajay Logo.png" className="h-8 md:h-10" alt="Swajay Solutions Logo" />
-                    <span className="self-center text-lg md:text-2xl font-semibold whitespace-nowrap text-white">Swajay Solutions</span>
+            <div className="w-full flex items-center justify-between px-6 py-4">
+                <NavLink
+                    to="/"
+                    className="flex items-center gap-4 relative z-50 shrink-0"
+                    onClick={() => window.scrollTo(0, 0)}
+                >
+                    {/* Logo */}
+                    <img
+                        src="/Swajay Logo.png"
+                        className="h-14 w-auto"
+                        alt="Swajay Solutions Logo"
+                    />
+
+                    {/* Text Block */}
+                    <div className="flex flex-col">
+                        {/* Company Name */}
+                        <span className="text-2xl font-semibold text-white leading-tight">
+                            Swajay Solutions
+                        </span>
+
+                        {/* Tagline centered under name */}
+                        <span className="text-sm text-white/80 text-center">
+                            Collaboration | Innovation | Smart Solutions
+                        </span>
+                    </div>
                 </NavLink>
+
+
                 <div className="flex md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse relative z-50 shrink-0">
                     <NavLink to="/contact" className="hidden md:block" onClick={() => window.scrollTo(0, 0)}>
                         <button type="button" className="text-white bg-primary hover:bg-blue-600 hover:scale-105 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-xs md:text-sm px-4 py-2 md:px-6 md:py-2.5 text-center cursor-pointer transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transform whitespace-nowrap">
@@ -116,8 +139,10 @@ const Navbar = () => {
                                         onClick={(e) => {
                                             if (link.megaMenu) {
                                                 toggleSubmenu(e, link.name);
+                                                if (window.innerWidth >= 768) window.scrollTo(0, 0);
                                             } else {
                                                 setIsOpen(false);
+                                                window.scrollTo(0, 0);
                                             }
                                         }}
                                         className={({ isActive }) =>
@@ -147,7 +172,7 @@ const Navbar = () => {
                                                             to={getColumnPath(col.title)}
                                                             onClick={() => {
                                                                 setIsOpen(false);
-                                                                // Force reload if already on the page to trigger useEffect or just let NavLink handle it
+                                                                window.scrollTo(0, 0);
                                                             }}
                                                             className="block"
                                                         >
@@ -163,6 +188,7 @@ const Navbar = () => {
                                                                         className="block text-gray-300 hover:text-primary transition-colors duration-200 text-sm"
                                                                         onClick={() => {
                                                                             setIsOpen(false);
+                                                                            window.scrollTo(0, 0);
                                                                         }}
                                                                     >
                                                                         {item}
@@ -185,9 +211,16 @@ const Navbar = () => {
                                                         <ul className="space-y-2 ml-4 border-l border-white/10 pl-4">
                                                             {col.items.map((item, itemIdx) => (
                                                                 <li key={itemIdx}>
-                                                                    <a href="#" className="block text-gray-300 hover:text-primary text-sm">
+                                                                    <NavLink
+                                                                        to={getItemPath(col.title, item)}
+                                                                        className="block text-gray-300 hover:text-primary text-sm"
+                                                                        onClick={() => {
+                                                                            setIsOpen(false);
+                                                                            window.scrollTo(0, 0);
+                                                                        }}
+                                                                    >
                                                                         {item}
-                                                                    </a>
+                                                                    </NavLink>
                                                                 </li>
                                                             ))}
                                                         </ul>
