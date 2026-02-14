@@ -2,7 +2,6 @@ import { motion, useMotionValue, useTransform, animate, useInView } from "framer
 import { useEffect, useRef } from "react";
 
 
-import PageHero from '../components/PageHero';
 import partnerPhoto from '../assets/partner_photo.jpg';
 import nagaraj from '../assets/Nagaraj Srinivasamurthy.jpg';
 import muniraju from '../assets/image1.png';

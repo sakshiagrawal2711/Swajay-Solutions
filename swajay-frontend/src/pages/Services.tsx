@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from 'react-router-dom';
-import PageHero from '../components/PageHero';
 
 const Services = () => {
     const location = useLocation();
