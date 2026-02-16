@@ -143,14 +143,30 @@ const Navbar = () => {
                 <div className={`items-center justify-between w-full md:flex md:w-auto md:order-1 absolute md:relative top-full left-0 bg-[#0F172A] md:bg-transparent shadow-lg md:shadow-none transition-all duration-300 p-4 md:p-0 border-t border-white/10 md:border-none ${isOpen ? 'max-h-[80vh] overflow-y-auto opacity-100 visible' : 'max-h-0 md:max-h-none opacity-0 md:opacity-100 invisible md:visible overflow-hidden md:overflow-visible'}`} id="navbar-sticky">
                     <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 relative">
                         {links.map((link) => (
-                            <li key={link.name} className="group relative border-b border-white/5 md:border-none last:border-none">
+                            <li
+                                key={link.name}
+                                className="group relative border-b border-white/5 md:border-none last:border-none"
+                                onMouseEnter={() => {
+                                    if (window.innerWidth >= 768) {
+                                        setActiveSubmenu(link.name);
+                                    }
+                                }}
+                                onMouseLeave={() => {
+                                    if (window.innerWidth >= 768) {
+                                        setActiveSubmenu(null);
+                                    }
+                                }}
+                            >
                                 <div className="flex items-center justify-between w-full">
                                     <NavLink
                                         to={link.path}
                                         onClick={(e) => {
                                             if (link.megaMenu) {
                                                 toggleSubmenu(e, link.name);
-                                                if (window.innerWidth >= 768) window.scrollTo(0, 0);
+                                                if (window.innerWidth >= 768) {
+                                                    window.scrollTo(0, 0);
+                                                    setActiveSubmenu(null);
+                                                }
                                             } else {
                                                 setIsOpen(false);
                                                 window.scrollTo(0, 0);
@@ -175,7 +191,10 @@ const Navbar = () => {
                                 {link.megaMenu && (
                                     <>
                                         {/* Desktop View */}
-                                        <div className="hidden md:block absolute left-0 top-full w-[600px] lg:w-[800px] bg-secondary border-t border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 -z-10 h-auto rounded-b-xl overflow-hidden -left-20 lg:-left-40">
+                                        <div
+                                            className={`hidden md:block absolute left-0 top-full w-[600px] lg:w-[800px] bg-secondary border-t border-white/10 shadow-xl transition-all duration-300 transform -z-10 h-auto rounded-b-xl overflow-hidden -left-20 lg:-left-40
+                                                ${activeSubmenu === link.name ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}
+                                        >
                                             <div className="p-8 grid grid-cols-12 gap-8">
                                                 {link.columns?.map((col, idx) => (
                                                     <div key={idx} className="col-span-6">
@@ -183,6 +202,7 @@ const Navbar = () => {
                                                             to={getColumnPath(col.title)}
                                                             onClick={() => {
                                                                 setIsOpen(false);
+                                                                setActiveSubmenu(null);
                                                             }}
                                                             className="block"
                                                         >
@@ -198,6 +218,7 @@ const Navbar = () => {
                                                                         className="block text-gray-300 hover:text-primary transition-colors duration-200 text-sm"
                                                                         onClick={() => {
                                                                             setIsOpen(false);
+                                                                            setActiveSubmenu(null);
                                                                         }}
                                                                     >
                                                                         {item}
