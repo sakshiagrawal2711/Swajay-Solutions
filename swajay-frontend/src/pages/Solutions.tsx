@@ -310,40 +310,41 @@ const Solutions = () => {
                 title="AI-Powered Solutions"
                 subtitle="Transform your title and mortgage operations with intelligent automation platforms designed specifically for the real estate industry"
                 label="Our Solutions"
-            />
+            >
+                <div className="grid grid-cols-1 gap-4">
+                    {solutions.map((solution) => (
+                        <button
+                            key={solution.id}
+                            onClick={() => setActiveTab(solution.id)}
+                            className={`group p-6 md:p-8 rounded-2xl md:rounded-3xl transition-all duration-300 text-left border-2 relative overflow-hidden
+                                ${activeTab === solution.id
+                                    ? 'bg-white border-primary shadow-xl scale-[1.02] z-10'
+                                    : 'bg-white/60 border-transparent hover:border-gray-200 hover:shadow-lg backdrop-blur-sm'
+                                }`}
+                        >
+                            <div className={`absolute top-0 left-0 w-2 h-full transition-colors duration-300
+                                ${activeTab === solution.id ? 'bg-primary' : 'bg-transparent group-hover:bg-gray-200'}`}></div>
+
+                            <span className={`text-xs font-bold uppercase tracking-wider mb-3 block
+                                ${activeTab === solution.id ? 'text-primary' : 'text-gray-500'}`}>
+                                {solution.category}
+                            </span>
+                            <h3 className={`font-bold text-xl md:text-2xl leading-snug mb-2
+                                ${activeTab === solution.id ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'}`}>
+                                {solution.title}
+                            </h3>
+                            <p className={`text-sm md:text-base font-medium
+                                ${activeTab === solution.id ? 'text-gray-600' : 'text-gray-500'}`}>
+                                {solution.subtitle}
+                            </p>
+                        </button>
+                    ))}
+                </div>
+            </PageHero>
 
             <section className="py-12 md:py-20 px-4 sm:px-6 relative z-10">
                 <div className="container mx-auto max-w-7xl">
-                    {/* Solution Tabs */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16">
-                        {solutions.map((solution) => (
-                            <button
-                                key={solution.id}
-                                onClick={() => setActiveTab(solution.id)}
-                                className={`group p-6 md:p-8 rounded-2xl md:rounded-3xl transition-all duration-300 text-left border-2 relative overflow-hidden
-                                    ${activeTab === solution.id
-                                        ? 'bg-white border-primary shadow-xl scale-[1.02] z-10'
-                                        : 'bg-white border-transparent hover:border-gray-200 hover:shadow-lg'
-                                    }`}
-                            >
-                                <div className={`absolute top-0 left-0 w-2 h-full transition-colors duration-300
-                                    ${activeTab === solution.id ? 'bg-primary' : 'bg-transparent group-hover:bg-gray-200'}`}></div>
-
-                                <span className={`text-xs font-bold uppercase tracking-wider mb-3 block
-                                    ${activeTab === solution.id ? 'text-primary' : 'text-gray-400'}`}>
-                                    {solution.category}
-                                </span>
-                                <h3 className={`font-bold text-xl md:text-2xl leading-snug mb-2
-                                    ${activeTab === solution.id ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'}`}>
-                                    {solution.title}
-                                </h3>
-                                <p className={`text-sm md:text-base font-medium
-                                    ${activeTab === solution.id ? 'text-gray-600' : 'text-gray-500'}`}>
-                                    {solution.subtitle}
-                                </p>
-                            </button>
-                        ))}
-                    </div>
+                    {/* Solution Tabs - MOVED TO HERO */}
 
                     {/* Content Display */}
                     <div id="solution-details" className="scroll-mt-24">
@@ -532,7 +533,7 @@ const Solutions = () => {
                     </div>
                 </div>
             </section>
-        </div>
+        </div >
     );
 };
 

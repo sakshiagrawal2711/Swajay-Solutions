@@ -44,7 +44,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, label, image, clas
                     </div>
 
                     {/* Right Column: Visual or Children */}
-                    <div className="relative hidden lg:block">
+                    <div className={`relative ${children ? 'block' : 'hidden lg:block'}`}>
                         {children ? (
                             children
                         ) : image ? (
