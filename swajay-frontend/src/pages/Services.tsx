@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from 'react-router-dom';
-import PageHero from '../components/PageHero';
 
 const Services = () => {
     const location = useLocation();
@@ -36,11 +35,149 @@ const Services = () => {
 
     return (
         <div className="min-h-screen bg-blue-50 relative">
-            <PageHero
-                title="Services"
-                subtitle="We move beyond traditional BPO by embedding advanced technology—from proprietary applications to sophisticated AI models—directly into your workflows"
-                label="Our Services"
-            />
+            {/* Custom Hero with Arrow Process Diagram */}
+            <section className="relative w-full min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-[#FAFAF9]">
+                {/* Background Layers */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px] mix-blend-multiply opacity-70"></div>
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-100/50 rounded-full blur-[100px] mix-blend-multiply opacity-70"></div>
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02]"></div>
+                </div>
+
+                <div className="max-w-screen-xl mx-auto px-6 relative z-10 w-full">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                        {/* Left Column: Text Content */}
+                        <div className="text-left">
+                            <span className="inline-block text-primary font-bold tracking-widest uppercase text-sm mb-4">
+                                Our Services
+                            </span>
+
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                                Services
+                            </h1>
+
+                            <p className="text-lg text-slate-600 max-w-xl font-medium leading-relaxed mb-8">
+                                We move beyond traditional BPO by embedding advanced technology—from proprietary applications to sophisticated AI models—directly into your workflows
+                            </p>
+                        </div>
+
+                        {/* Right Column: Arrow Process Diagram */}
+                        <div className="relative hidden lg:block">
+                            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 relative z-10">
+                                {/* AI Process Title */}
+                                <div className="text-center mb-8">
+                                    <h3 className="text-lg font-bold text-gray-700 uppercase tracking-wider mb-6">AI PROCESS</h3>
+                                </div>
+
+                                {/* Enhanced Arrow Flow with Labels */}
+                                <div className="relative mb-8">
+                                    {/* Process labels above arrow */}
+                                    <div className="flex justify-between mb-4 px-8">
+                                        <div className="text-center flex-1">
+                                            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Ingest Data</div>
+                                        </div>
+                                        <div className="text-center flex-1">
+                                            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Flag Exceptions</div>
+                                        </div>
+                                        <div className="text-center flex-1">
+                                            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Generate Report</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Arrow SVG */}
+                                    <svg viewBox="0 0 600 80" className="w-full h-auto drop-shadow-lg">
+                                        <defs>
+                                            {/* Gradient for arrow segments */}
+                                            <linearGradient id="segment1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" style={{ stopColor: '#475569', stopOpacity: 1 }} />
+                                                <stop offset="100%" style={{ stopColor: '#64748b', stopOpacity: 1 }} />
+                                            </linearGradient>
+                                            <linearGradient id="segment2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" style={{ stopColor: '#64748b', stopOpacity: 1 }} />
+                                                <stop offset="100%" style={{ stopColor: '#94a3b8', stopOpacity: 1 }} />
+                                            </linearGradient>
+                                            <linearGradient id="segment3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" style={{ stopColor: '#94a3b8', stopOpacity: 1 }} />
+                                                <stop offset="100%" style={{ stopColor: '#cbd5e1', stopOpacity: 1 }} />
+                                            </linearGradient>
+                                            <linearGradient id="arrowHead" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" style={{ stopColor: '#cbd5e1', stopOpacity: 1 }} />
+                                                <stop offset="100%" style={{ stopColor: '#e2e8f0', stopOpacity: 1 }} />
+                                            </linearGradient>
+                                        </defs>
+
+                                        {/* Segment 1 - Document Stack Icon */}
+                                        <path d="M 20 20 L 140 20 L 160 40 L 140 60 L 20 60 Z" fill="url(#segment1)" />
+                                        <g transform="translate(60, 30)">
+                                            <rect x="0" y="0" width="20" height="16" fill="white" opacity="0.4" rx="2" />
+                                            <rect x="2" y="2" width="16" height="3" fill="white" opacity="0.6" />
+                                            <rect x="2" y="7" width="16" height="3" fill="white" opacity="0.6" />
+                                            <rect x="2" y="12" width="12" height="2" fill="white" opacity="0.6" />
+                                        </g>
+
+                                        {/* Segment 2 - Processing/Gear Icon */}
+                                        <path d="M 160 20 L 280 20 L 300 40 L 280 60 L 160 60 L 140 40 Z" fill="url(#segment2)" />
+                                        <g transform="translate(210, 30)">
+                                            <circle cx="10" cy="10" r="8" fill="none" stroke="white" strokeWidth="2" opacity="0.5" />
+                                            <circle cx="10" cy="10" r="4" fill="white" opacity="0.4" />
+                                        </g>
+
+                                        {/* Segment 3 - Alert Triangle Icon */}
+                                        <path d="M 300 20 L 420 20 L 440 40 L 420 60 L 300 60 L 280 40 Z" fill="url(#segment3)" />
+                                        <g transform="translate(350, 28)">
+                                            <path d="M 10 5 L 16 17 L 4 17 Z" fill="white" opacity="0.5" />
+                                            <line x1="10" y1="10" x2="10" y2="14" stroke="white" strokeWidth="1.5" opacity="0.7" />
+                                            <circle cx="10" cy="16" r="0.8" fill="white" opacity="0.7" />
+                                        </g>
+
+                                        {/* Segment 4 - Folder Icon */}
+                                        <path d="M 440 20 L 520 20 L 540 40 L 520 60 L 440 60 L 420 40 Z" fill="#cbd5e1" />
+                                        <g transform="translate(470, 32)">
+                                            <path d="M 0 0 L 8 0 L 10 2 L 20 2 L 20 14 L 0 14 Z" fill="white" opacity="0.5" />
+                                            <rect x="2" y="5" width="16" height="2" fill="white" opacity="0.3" />
+                                        </g>
+
+                                        {/* Arrow Head */}
+                                        <path d="M 540 20 L 580 40 L 540 60 Z" fill="url(#arrowHead)" />
+                                    </svg>
+                                </div>
+
+                                {/* Feature Cards */}
+                                <div className="grid grid-cols-2 gap-4">
+                                    {[
+                                        {
+                                            icon: "🔍",
+                                            title: "AI-Powered Search",
+                                            desc: "Machine learning algorithms that understand context, identify patterns, and continuously improve accuracy"
+                                        },
+                                        {
+                                            icon: "🔗",
+                                            title: "Multi-Source Integration",
+                                            desc: "Seamless access to county records, court databases, and third-party data providers"
+                                        },
+                                        {
+                                            icon: "⚠️",
+                                            title: "Exception Management",
+                                            desc: "Intelligent flagging of liens, judgements, and other title issues with automated routing"
+                                        },
+                                        {
+                                            icon: "📊",
+                                            title: "Automated Reporting",
+                                            desc: "Generate comprehensive, compliant title reports with built-in quality assurance checks"
+                                        }
+                                    ].map((feature, idx) => (
+                                        <div key={idx} className="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors duration-200">
+                                            <div className="text-2xl mb-2">{feature.icon}</div>
+                                            <h4 className="font-bold text-gray-900 text-sm mb-1">{feature.title}</h4>
+                                            <p className="text-xs text-gray-600 leading-relaxed">{feature.desc}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Inline Tabs Navigation */}
             <div className="max-w-7xl mx-auto px-6 md:px-16 -mt-8 relative z-30">
@@ -82,7 +219,7 @@ const Services = () => {
                         transition={{ duration: 0.3 }}
                     >
                         {/* Mortgage Functional Capabilities Section */}
-                        <section className="py-24 px-6 md:px-16 bg-blue-50 min-h-[60vh]">
+                        <section id="mortgage-section" className="py-24 px-6 md:px-16 bg-blue-50 min-h-[60vh] scroll-mt-24">
                             <div className="max-w-7xl mx-auto">
                                 <div className="mb-16">
                                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -200,7 +337,7 @@ const Services = () => {
                         transition={{ duration: 0.3 }}
                     >
                         {/* Blueprint of Technology Excellence Section */}
-                        <section className="py-24 px-6 md:px-16 bg-blue-50 min-h-[60vh]">
+                        <section id="technology-section" className="py-24 px-6 md:px-16 bg-blue-50 min-h-[60vh] scroll-mt-24">
                             <div className="max-w-7xl mx-auto">
                                 <div className="mb-16">
                                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

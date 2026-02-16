@@ -52,7 +52,17 @@ const Navbar = () => {
             ],
         },
         { name: 'Case Studies', path: '/case-studies' },
-        { name: 'Solutions', path: '/solutions' },
+        {
+            name: 'Solutions',
+            path: '/solutions',
+            megaMenu: true,
+            columns: [
+                {
+                    title: "AI-Powered Solutions",
+                    items: ["TitleNexus AI", "TitleOps AI"]
+                }
+            ]
+        },
         { name: 'Contact', path: '/contact' },
     ];
 
@@ -65,10 +75,11 @@ const Navbar = () => {
 
     const getColumnPath = (title: string) => {
         const trimmedTitle = title.trim();
-        if (trimmedTitle === "Mortgage Functional Capabilities") return "/services?tab=mortgage";
-        if (trimmedTitle === "Technology Excellence") return "/services?tab=technology";
-        if (trimmedTitle === "Artificial Intelligence") return "/ai?tab=ai";
-        if (trimmedTitle === "Mortgage Title Automation Strategy") return "/ai?tab=strategy";
+        if (trimmedTitle === "Mortgage Functional Capabilities") return "/services?tab=mortgage#mortgage-section";
+        if (trimmedTitle === "Technology Excellence") return "/services?tab=technology#technology-section";
+        if (trimmedTitle === "Artificial Intelligence") return "/ai?tab=ai#ai-section";
+        if (trimmedTitle === "Mortgage Title Automation Strategy") return "/ai?tab=strategy#strategy-section";
+        if (trimmedTitle === "AI-Powered Solutions") return "/solutions";
         return "#";
     };
 
@@ -172,7 +183,6 @@ const Navbar = () => {
                                                             to={getColumnPath(col.title)}
                                                             onClick={() => {
                                                                 setIsOpen(false);
-                                                                window.scrollTo(0, 0);
                                                             }}
                                                             className="block"
                                                         >
@@ -188,7 +198,6 @@ const Navbar = () => {
                                                                         className="block text-gray-300 hover:text-primary transition-colors duration-200 text-sm"
                                                                         onClick={() => {
                                                                             setIsOpen(false);
-                                                                            window.scrollTo(0, 0);
                                                                         }}
                                                                     >
                                                                         {item}
@@ -207,7 +216,14 @@ const Navbar = () => {
                                             <div className="px-4 space-y-6">
                                                 {link.columns?.map((col, idx) => (
                                                     <div key={idx}>
-                                                        <h3 className="text-xs font-bold text-gray-500 uppercase mb-2 ml-2">{col.title}</h3>
+                                                        <NavLink
+                                                            to={getColumnPath(col.title)}
+                                                            onClick={() => {
+                                                                setIsOpen(false);
+                                                            }}
+                                                        >
+                                                            <h3 className="text-xs font-bold text-gray-500 uppercase mb-2 ml-2 hover:text-primary transition-colors cursor-pointer">{col.title}</h3>
+                                                        </NavLink>
                                                         <ul className="space-y-2 ml-4 border-l border-white/10 pl-4">
                                                             {col.items.map((item, itemIdx) => (
                                                                 <li key={itemIdx}>
@@ -216,7 +232,6 @@ const Navbar = () => {
                                                                         className="block text-gray-300 hover:text-primary text-sm"
                                                                         onClick={() => {
                                                                             setIsOpen(false);
-                                                                            window.scrollTo(0, 0);
                                                                         }}
                                                                     >
                                                                         {item}

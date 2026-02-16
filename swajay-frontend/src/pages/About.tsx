@@ -2,10 +2,10 @@ import { motion, useMotionValue, useTransform, animate, useInView } from "framer
 import { useEffect, useRef } from "react";
 
 
-import PageHero from '../components/PageHero';
 import partnerPhoto from '../assets/partner_photo.jpg';
 import nagaraj from '../assets/Nagaraj Srinivasamurthy.jpg';
-import muniraju from '../assets/image1.jpeg';
+import muniraju from '../assets/image1.png';
+import thirumalesh from '../assets/Thiru Photo.png';
 
 function Counter({ from = 0, to, duration = 2, suffix = "" }: { from?: number; to: number; duration?: number; suffix?: string }) {
     const count = useMotionValue(from);
@@ -26,11 +26,197 @@ function Counter({ from = 0, to, duration = 2, suffix = "" }: { from?: number; t
 const About = () => {
     return (
         <div className="min-h-screen bg-blue-50">
-            <PageHero
-                title="About Swajay"
-                subtitle="Decades of expertise, modern innovation, and a commitment to solving real business challenges"
-                label="About Us"
-            />
+            {/* Custom Hero with Value Propositions Diagram */}
+            <section className="relative w-full min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-[#FAFAF9]">
+                {/* Background Layers */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px] mix-blend-multiply opacity-70"></div>
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-100/50 rounded-full blur-[100px] mix-blend-multiply opacity-70"></div>
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02]"></div>
+                </div>
+
+                <div className="max-w-screen-xl mx-auto px-6 relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                        {/* Left Column: Text Content */}
+                        <div className="text-left">
+                            <span className="inline-block text-primary font-bold tracking-widest uppercase text-sm mb-4">
+                                About Us
+                            </span>
+
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                                About Swajay
+                            </h1>
+
+                            <p className="text-lg text-slate-600 max-w-xl font-medium leading-relaxed mb-8">
+                                Decades of expertise, modern innovation, and a commitment to solving real business challenges
+                            </p>
+                        </div>
+
+                        {/* Right Column: Value Propositions Circular Diagram */}
+                        <div className="relative hidden lg:flex items-center justify-center py-12">
+                            <div className="relative w-full max-w-md">
+                                {/* Glow effect behind circle */}
+                                <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-3xl"></div>
+
+                                {/* SVG Circular Diagram with Clean Gaps */}
+                                <svg viewBox="0 0 400 400" className="w-full h-full relative z-10 drop-shadow-2xl">
+                                    {/* Define gradient */}
+                                    <defs>
+                                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
+                                            <stop offset="100%" style={{ stopColor: '#2563eb', stopOpacity: 1 }} />
+                                        </linearGradient>
+
+                                        {/* Shadow filter */}
+                                        <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                            <feGaussianBlur in="SourceAlpha" stdDeviation="6" />
+                                            <feOffset dx="0" dy="3" result="offsetblur" />
+                                            <feComponentTransfer>
+                                                <feFuncA type="linear" slope="0.25" />
+                                            </feComponentTransfer>
+                                            <feMerge>
+                                                <feMergeNode />
+                                                <feMergeNode in="SourceGraphic" />
+                                            </feMerge>
+                                        </filter>
+                                    </defs>
+
+                                    {/* Four quarter circles with gaps between them */}
+
+                                    {/* Top Left Quarter - Industry Expertise */}
+                                    <path
+                                        d="M 200 200 L 200 48 A 152 152 0 0 0 48 200 L 196 200 Z"
+                                        fill="url(#blueGrad)"
+                                        filter="url(#dropShadow)"
+                                    />
+
+                                    {/* Top Right Quarter - Proven Outcomes */}
+                                    <path
+                                        d="M 204 200 L 204 48 A 152 152 0 0 1 352 200 L 204 200 Z"
+                                        fill="url(#blueGrad)"
+                                        filter="url(#dropShadow)"
+                                    />
+
+                                    {/* Bottom Left Quarter - Speed & Agility */}
+                                    <path
+                                        d="M 200 204 L 48 204 A 152 152 0 0 0 200 352 L 200 204 Z"
+                                        fill="url(#blueGrad)"
+                                        filter="url(#dropShadow)"
+                                    />
+
+                                    {/* Bottom Right Quarter - Trusted Partnership */}
+                                    <path
+                                        d="M 204 204 L 352 204 A 152 152 0 0 1 204 352 L 204 204 Z"
+                                        fill="url(#blueGrad)"
+                                        filter="url(#dropShadow)"
+                                    />
+
+                                    {/* Text Labels - Centered in Each Quarter */}
+
+                                    {/* Top Left - Industry Expertise */}
+                                    <text
+                                        x="130" y="130"
+                                        fill="white"
+                                        fontSize="20"
+                                        fontWeight="700"
+                                        textAnchor="middle"
+                                        className="select-none"
+                                    >
+                                        Industry
+                                    </text>
+                                    <text
+                                        x="130" y="155"
+                                        fill="white"
+                                        fontSize="20"
+                                        fontWeight="700"
+                                        textAnchor="middle"
+                                        className="select-none"
+                                    >
+                                        Expertise
+                                    </text>
+
+                                    {/* Top Right - Proven Outcomes */}
+                                    <text
+                                        x="270" y="130"
+                                        fill="white"
+                                        fontSize="20"
+                                        fontWeight="700"
+                                        textAnchor="middle"
+                                        className="select-none"
+                                    >
+                                        Proven
+                                    </text>
+                                    <text
+                                        x="270" y="155"
+                                        fill="white"
+                                        fontSize="20"
+                                        fontWeight="700"
+                                        textAnchor="middle"
+                                        className="select-none"
+                                    >
+                                        Outcomes
+                                    </text>
+
+                                    {/* Bottom Left - Speed & Agility */}
+                                    <text
+                                        x="125" y="250"
+                                        fill="white"
+                                        fontSize="20"
+                                        fontWeight="700"
+                                        textAnchor="middle"
+                                        className="select-none"
+                                    >
+                                        Speed &
+                                    </text>
+                                    <text
+                                        x="130" y="275"
+                                        fill="white"
+                                        fontSize="20"
+                                        fontWeight="700"
+                                        textAnchor="middle"
+                                        className="select-none"
+                                    >
+                                        Agility
+                                    </text>
+
+                                    {/* Bottom Right - Trusted Partnership */}
+                                    <text
+                                        x="270" y="250"
+                                        fill="white"
+                                        fontSize="20"
+                                        fontWeight="700"
+                                        textAnchor="middle"
+                                        className="select-none"
+                                    >
+                                        Trusted
+                                    </text>
+                                    <text
+                                        x="270" y="275"
+                                        fill="white"
+                                        fontSize="20"
+                                        fontWeight="700"
+                                        textAnchor="middle"
+                                        className="select-none"
+                                    >
+                                        Partnership
+                                    </text>
+                                </svg>
+
+                                {/* Gentle floating animation */}
+                                <style>{`
+                                    @keyframes gentleFloat {
+                                        0%, 100% { transform: translateY(0px); }
+                                        50% { transform: translateY(-8px); }
+                                    }
+                                    .relative.w-full.max-w-md {
+                                        animation: gentleFloat 6s ease-in-out infinite;
+                                    }
+                                `}</style>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Mission Section */}
             <section id="mission" className="py-20 px-6 md:px-16 overflow-hidden bg-blue-50">
@@ -210,10 +396,10 @@ const About = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { id: 1, name: "Raju Gourishetty", role: "Role / Title", image: muniraju },
-                            { id: 2, name: "Nagaraj Srinivasamurthy", role: "Role / Title", image: nagaraj },
-                            { id: 3, name: "Muniraju S", role: "Role / Title", image: partnerPhoto },
-                            { id: 4, name: "Partner 4", role: "Role / Title", image: null },
+                            { id: 1, name: "Raju Gourishetty", role: "", image: muniraju },
+                            { id: 2, name: "Nagaraj Srinivasamurthy", role: "", image: nagaraj },
+                            { id: 3, name: "Muniraju S", role: "", image: partnerPhoto },
+                            { id: 4, name: "Thirumalesh M V", role: "", image: thirumalesh },
                         ].map((partner) => (
                             <motion.div
                                 key={partner.id}
