@@ -1,19 +1,83 @@
 import { motion } from 'framer-motion';
-
 import PageHero from '../components/PageHero';
 
 const Contact = () => {
     return (
         <div className="min-h-screen bg-blue-50">
-            <PageHero
-                title="Get in Touch"
-                subtitle="Ready to transform your business? Let's start the conversation and explore how we can help you achieve your goals."
-                label="Contact Us"
-            />
+            {/* Hero Section with Contact Form */}
+            <section className="relative w-full py-20 bg-[#FAFAF9]">
+                {/* Background Layers */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px] mix-blend-multiply opacity-70"></div>
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-100/50 rounded-full blur-[100px] mix-blend-multiply opacity-70"></div>
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02]"></div>
+                </div>
 
+                <div className="max-w-screen-xl mx-auto px-6 relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+                        {/* Left Column: Text Content */}
+                        <div className="text-left pt-12">
+                            <span className="inline-block text-primary font-bold tracking-widest uppercase text-sm mb-4">
+                                Contact Us
+                            </span>
+
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                                Get in Touch
+                            </h1>
+
+                            <p className="text-lg text-slate-600 max-w-xl font-medium leading-relaxed mb-8">
+                                Ready to transform your business? Let's start the conversation and explore how we can help you achieve your goals.
+                            </p>
+                        </div>
+
+                        {/* Right Column: Contact Form */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="bg-white rounded-3xl p-8 md:p-10 border border-gray-100 shadow-xl"
+                        >
+                            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+                            <form className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                        <input type="text" id="name" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Your name" />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                        <input type="email" id="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="name@example.com" />
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                        <input type="tel" id="phone" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="+1 (555) 000-0000" />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                                        <input type="text" id="company" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Your Company" />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                    <textarea id="message" rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none" placeholder="Tell us about your project or inquiry..."></textarea>
+                                </div>
+
+                                <button type="submit" className="w-full py-4 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-lg hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1">
+                                    Send Message
+                                </button>
+                            </form>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Contact Information Section */}
             <section className="py-20 px-6 relative z-10">
                 <div className="container mx-auto max-w-6xl">
-
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         {/* Contact Information */}
                         <motion.div
@@ -71,46 +135,28 @@ const Contact = () => {
                             </div>
                         </motion.div>
 
-                        {/* Contact Form */}
+                        {/* Google Map */}
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.3 }}
+                            transition={{ delay: 0.4 }}
                             className="bg-white rounded-3xl p-8 md:p-10 border border-gray-100 shadow-xl"
                         >
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-                            <form className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                                        <input type="text" id="name" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Your name" />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                                        <input type="email" id="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="name@example.com" />
-                                    </div>
-                                </div>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Locations</h2>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                                        <input type="tel" id="phone" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="+1 (555) 000-0000" />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
-                                        <input type="text" id="company" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Your Company" />
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                                    <textarea id="message" rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none" placeholder="Tell us about your project or inquiry..."></textarea>
-                                </div>
-
-                                <button type="submit" className="w-full py-4 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-lg hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1">
-                                    Send Message
-                                </button>
-                            </form>
+                            {/* Embedded Google Map */}
+                            <div className="w-full h-[400px] rounded-2xl overflow-hidden border border-gray-200 shadow-md mb-6">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d230.96729571996005!2d77.6392383224147!3d12.981826907006285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDU4JzU1LjAiTiA3N8KwMzgnMjEuOSJF!5e1!3m2!1sen!2sin!4v1771237712039!5m2!1sen!2sin"
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen={true}
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title="Swajay Solutions Office Location"
+                                ></iframe>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
