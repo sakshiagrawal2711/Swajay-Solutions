@@ -36,7 +36,7 @@ const Services = () => {
     return (
         <div className="min-h-screen bg-blue-50 relative">
             {/* Custom Hero with Arrow Process Diagram */}
-            <section className="relative w-full min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-[#FAFAF9]">
+            <section className="relative w-full min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-[#FAFAF9] py-12">
                 {/* Background Layers */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px] mix-blend-multiply opacity-70"></div>

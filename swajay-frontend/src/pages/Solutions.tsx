@@ -315,7 +315,12 @@ const Solutions = () => {
                     {solutions.map((solution) => (
                         <button
                             key={solution.id}
-                            onClick={() => setActiveTab(solution.id)}
+                            onClick={() => {
+                                setActiveTab(solution.id);
+                                setTimeout(() => {
+                                    document.getElementById('solution-details')?.scrollIntoView({ behavior: 'smooth' });
+                                }, 100);
+                            }}
                             className={`group p-6 md:p-8 rounded-2xl md:rounded-3xl transition-all duration-300 text-left border-2 relative overflow-hidden
                                 ${activeTab === solution.id
                                     ? 'bg-white border-primary shadow-xl scale-[1.02] z-10'

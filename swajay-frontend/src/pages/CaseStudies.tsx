@@ -243,7 +243,12 @@ const CaseStudies = () => {
                         {caseStudies.map((study) => (
                             <button
                                 key={study.id}
-                                onClick={() => setActiveTab(study.id)}
+                                onClick={() => {
+                                    setActiveTab(study.id);
+                                    setTimeout(() => {
+                                        document.getElementById('study-details')?.scrollIntoView({ behavior: 'smooth' });
+                                    }, 100);
+                                }}
                                 className={`group p-5 rounded-2xl transition-all duration-300 text-left border relative overflow-hidden flex items-center gap-5
                                     ${activeTab === study.id
                                         ? 'bg-white border-primary shadow-lg scale-[1.02] z-10'
