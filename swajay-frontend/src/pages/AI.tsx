@@ -28,9 +28,9 @@ const AI = () => {
                 // Special case for simple section IDs
                 const element = document.getElementById(id);
                 if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }, 500);
+            }, 300);
         }
     }, [location.hash, activeTab]);
 
@@ -281,7 +281,7 @@ const AI = () => {
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ delay: index * 0.1 }}
-                                            className="bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col"
+                                            className="bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col scroll-mt-32"
                                         >
                                             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                                                 {item.icon}

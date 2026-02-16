@@ -27,9 +27,9 @@ const Services = () => {
             setTimeout(() => {
                 const element = document.getElementById(id);
                 if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }, 500); // Small delay to ensure render
+            }, 800); // Small delay to ensure render
         }
     }, [location.hash, activeTab]);
 
@@ -301,7 +301,7 @@ const Services = () => {
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ delay: index * 0.1 }}
-                                            className="bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group"
+                                            className="bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group scroll-mt-32"
                                         >
                                             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors text-primary">
                                                 {item.icon}
@@ -405,7 +405,7 @@ const Services = () => {
                                                     window.scrollTo(710, 710);
                                                 }
                                             }}
-                                            className={`bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group ${(item as any).link ? 'cursor-pointer hover:border-primary/50' : ''}`}
+                                            className={`bg-white p-8 rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group scroll-mt-32 ${(item as any).link ? 'cursor-pointer hover:border-primary/50' : ''}`}
                                         >
                                             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors text-primary">
                                                 {item.icon}

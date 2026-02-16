@@ -86,8 +86,10 @@ const Navbar = () => {
     const getItemPath = (columnTitle: string, itemName: string) => {
         const basePath = getColumnPath(columnTitle);
         if (basePath === "#") return "#";
+        // Remove any existing hash from basePath to avoid double hashes
+        const basePathWithoutHash = basePath.split('#')[0];
         const slug = itemName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-        return `${basePath}#${slug}`;
+        return `${basePathWithoutHash}#${slug}`;
     };
 
     return (

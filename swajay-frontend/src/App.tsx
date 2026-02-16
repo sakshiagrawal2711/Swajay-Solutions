@@ -33,15 +33,11 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.hash) {
-      const element = document.getElementById(location.hash.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
+    // Only scroll to top if there's no hash - let pages handle hash scrolling
+    if (!location.hash) {
       window.scrollTo(0, 0);
     }
-  }, [location.pathname, location.hash]);
+  }, [location.pathname]);
 
   return (
     <AnimatePresence mode='wait'>
