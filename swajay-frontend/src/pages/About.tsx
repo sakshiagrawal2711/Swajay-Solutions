@@ -60,147 +60,128 @@ const About = () => {
 
                                 {/* SVG Circular Diagram with Clean Gaps */}
                                 <svg viewBox="0 0 400 400" className="w-full h-full relative z-10 drop-shadow-2xl">
-                                    {/* Define gradient */}
                                     <defs>
-                                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
-                                            <stop offset="100%" style={{ stopColor: '#2563eb', stopOpacity: 1 }} />
+                                        {/* Premium diagonal gradient */}
+                                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stopColor="#e0f2fe" />
+                                            <stop offset="100%" stopColor="#a5b4fc" />
                                         </linearGradient>
 
-                                        {/* Shadow filter */}
-                                        <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
-                                            <feGaussianBlur in="SourceAlpha" stdDeviation="6" />
-                                            <feOffset dx="0" dy="3" result="offsetblur" />
-                                            <feComponentTransfer>
-                                                <feFuncA type="linear" slope="0.25" />
-                                            </feComponentTransfer>
-                                            <feMerge>
-                                                <feMergeNode />
-                                                <feMergeNode in="SourceGraphic" />
-                                            </feMerge>
+                                        {/* Subtle soft shadow */}
+                                        <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                            <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#000000" floodOpacity="0.15" />
                                         </filter>
                                     </defs>
 
-                                    {/* Four quarter circles with gaps between them */}
-
-                                    {/* Top Left Quarter - Industry Expertise */}
+                                    {/* Quadrants (perfect alignment, no coordinate shifting) */}
+                                    {/* Top Left */}
                                     <path
-                                        d="M 200 200 L 200 48 A 152 152 0 0 0 48 200 L 196 200 Z"
+                                        d="M200,200 L200,50 A150,150 0 0,0 50,200 Z"
                                         fill="url(#blueGrad)"
-                                        filter="url(#dropShadow)"
+                                        stroke="#ffffff"
+                                        strokeWidth="3"
+                                        filter="url(#softShadow)"
+                                        className="transition-all duration-300 hover:scale-[1.03] origin-center"
                                     />
 
-                                    {/* Top Right Quarter - Proven Outcomes */}
+                                    {/* Top Right */}
                                     <path
-                                        d="M 204 200 L 204 48 A 152 152 0 0 1 352 200 L 204 200 Z"
+                                        d="M200,200 L200,50 A150,150 0 0,1 350,200 Z"
                                         fill="url(#blueGrad)"
-                                        filter="url(#dropShadow)"
+                                        stroke="#ffffff"
+                                        strokeWidth="3"
+                                        filter="url(#softShadow)"
+                                        className="transition-all duration-300 hover:scale-[1.03] origin-center"
                                     />
 
-                                    {/* Bottom Left Quarter - Speed & Agility */}
+                                    {/* Bottom Left */}
                                     <path
-                                        d="M 200 204 L 48 204 A 152 152 0 0 0 200 352 L 200 204 Z"
+                                        d="M200,200 L50,200 A150,150 0 0,0 200,350 Z"
                                         fill="url(#blueGrad)"
-                                        filter="url(#dropShadow)"
+                                        stroke="#ffffff"
+                                        strokeWidth="3"
+                                        filter="url(#softShadow)"
+                                        className="transition-all duration-300 hover:scale-[1.03] origin-center"
                                     />
 
-                                    {/* Bottom Right Quarter - Trusted Partnership */}
+                                    {/* Bottom Right */}
                                     <path
-                                        d="M 204 204 L 352 204 A 152 152 0 0 1 204 352 L 204 204 Z"
+                                        d="M200,200 L350,200 A150,150 0 0,1 200,350 Z"
                                         fill="url(#blueGrad)"
-                                        filter="url(#dropShadow)"
+                                        stroke="#ffffff"
+                                        strokeWidth="3"
+                                        filter="url(#softShadow)"
+                                        className="transition-all duration-300 hover:scale-[1.03] origin-center"
                                     />
 
-                                    {/* Text Labels - Centered in Each Quarter */}
+                                    {/* Center Anchor Circle */}
+                                    <circle
+                                        cx="200"
+                                        cy="200"
+                                        r="50"
+                                        fill="#ffffff"
+                                        className="drop-shadow-xl"
+                                    />
 
-                                    {/* Top Left - Industry Expertise */}
+                                    {/* Center Title */}
                                     <text
-                                        x="130" y="130"
-                                        fill="white"
-                                        fontSize="20"
-                                        fontWeight="700"
+                                        x="200"
+                                        y="190"
                                         textAnchor="middle"
-                                        className="select-none"
+                                        fontSize="16"
+                                        fontWeight="650"
+                                        fill="#1c1f23ff"
+                                        letterSpacing="1"
                                     >
+                                        Swajay's
+                                    </text>
+
+                                    <text
+                                        x="200"
+                                        y="215"
+                                        textAnchor="middle"
+                                        fontSize="16"
+                                        fontWeight="650"
+                                        fill="#0f172a"
+                                    >
+                                        Advantages
+                                    </text>
+
+                                    {/* Text Labels - Better Balanced */}
+
+                                    {/* Top Left */}
+                                    <text x="125" y="125" textAnchor="middle" fontSize="18" fontWeight="600" fill="#0f172a">
                                         Industry
                                     </text>
-                                    <text
-                                        x="130" y="155"
-                                        fill="white"
-                                        fontSize="20"
-                                        fontWeight="700"
-                                        textAnchor="middle"
-                                        className="select-none"
-                                    >
+                                    <text x="125" y="150" textAnchor="middle" fontSize="18" fontWeight="600" fill="#0f172a">
                                         Expertise
                                     </text>
 
-                                    {/* Top Right - Proven Outcomes */}
-                                    <text
-                                        x="270" y="130"
-                                        fill="white"
-                                        fontSize="20"
-                                        fontWeight="700"
-                                        textAnchor="middle"
-                                        className="select-none"
-                                    >
+                                    {/* Top Right */}
+                                    <text x="275" y="125" textAnchor="middle" fontSize="18" fontWeight="600" fill="#0f172a">
                                         Proven
                                     </text>
-                                    <text
-                                        x="270" y="155"
-                                        fill="white"
-                                        fontSize="20"
-                                        fontWeight="700"
-                                        textAnchor="middle"
-                                        className="select-none"
-                                    >
+                                    <text x="275" y="150" textAnchor="middle" fontSize="18" fontWeight="600" fill="#0f172a">
                                         Outcomes
                                     </text>
 
-                                    {/* Bottom Left - Speed & Agility */}
-                                    <text
-                                        x="125" y="250"
-                                        fill="white"
-                                        fontSize="20"
-                                        fontWeight="700"
-                                        textAnchor="middle"
-                                        className="select-none"
-                                    >
+                                    {/* Bottom Left */}
+                                    <text x="125" y="255" textAnchor="middle" fontSize="18" fontWeight="600" fill="#0f172a">
                                         Speed &
                                     </text>
-                                    <text
-                                        x="130" y="275"
-                                        fill="white"
-                                        fontSize="20"
-                                        fontWeight="700"
-                                        textAnchor="middle"
-                                        className="select-none"
-                                    >
+                                    <text x="125" y="280" textAnchor="middle" fontSize="18" fontWeight="600" fill="#0f172a">
                                         Agility
                                     </text>
 
-                                    {/* Bottom Right - Trusted Partnership */}
-                                    <text
-                                        x="270" y="250"
-                                        fill="white"
-                                        fontSize="20"
-                                        fontWeight="700"
-                                        textAnchor="middle"
-                                        className="select-none"
-                                    >
+                                    {/* Bottom Right */}
+                                    <text x="275" y="255" textAnchor="middle" fontSize="18" fontWeight="600" fill="#0f172a">
                                         Trusted
                                     </text>
-                                    <text
-                                        x="270" y="275"
-                                        fill="white"
-                                        fontSize="20"
-                                        fontWeight="700"
-                                        textAnchor="middle"
-                                        className="select-none"
-                                    >
+                                    <text x="275" y="280" textAnchor="middle" fontSize="18" fontWeight="600" fill="#0f172a">
                                         Partnership
                                     </text>
                                 </svg>
+
 
                                 {/* Gentle floating animation */}
                                 <style>{`
@@ -216,10 +197,10 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Mission Section */}
-            <section id="mission" className="py-20 px-6 md:px-16 overflow-hidden bg-blue-50">
+            < section id="mission" className="py-20 px-6 md:px-16 overflow-hidden bg-blue-50" >
                 <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -268,10 +249,10 @@ const About = () => {
                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl transform translate-x-10 -translate-y-10 transition-transform duration-700 group-hover:scale-150"></div>
                     </motion.div>
                 </div>
-            </section>
+            </section >
 
             {/* Vision Section */}
-            <section className="py-20 px-6 md:px-16 bg-blue-50 overflow-hidden">
+            < section className="py-20 px-6 md:px-16 bg-blue-50 overflow-hidden" >
                 <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -322,10 +303,10 @@ const About = () => {
                         </ul>
                     </motion.div>
                 </div>
-            </section>
+            </section >
 
             {/* Stats Section */}
-            <section className="bg-white py-20 px-6 md:px-16 text-gray-900 border-y border-gray-100">
+            < section className="bg-white py-20 px-6 md:px-16 text-gray-900 border-y border-gray-100" >
                 <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     {[
                         { number: 100, suffix: "%", label: "Client Satisfaction" },
@@ -341,10 +322,10 @@ const About = () => {
                         </div>
                     ))}
                 </div>
-            </section>
+            </section >
 
             {/* Our Team Section */}
-            <section className="py-24 px-6 md:px-16 bg-blue-50">
+            < section className="py-24 px-6 md:px-16 bg-blue-50" >
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <motion.h2
@@ -371,23 +352,61 @@ const About = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-white border border-gray-100 rounded-3xl p-8 md:p-12 mb-16 text-center shadow-md"
+                        className="bg-white border border-slate-200/60 rounded-3xl p-10 md:p-14 mb-20 shadow-xl"
                     >
-                        <p className="text-gray-600 leading-relaxed max-w-4xl mx-auto space-y-6 text-lg">
-                            <span className="block mb-6">
-                                Our leadership team brings decades of hands-on experience across mortgage lending, servicing operations, and the broader BFSI landscape—including banking, financial services, and regulated enterprise environments. What sets us apart isn't tenure alone, but our ability to translate deep industry expertise into consistent, measurable outcomes.
-                            </span>
-                            <span className="block mb-6">
-                                We are powered by a multidisciplinary team that blends strong domain knowledge with modern engineering. Mortgage and title specialists work alongside BFSI SMEs, AI practitioners, automation architects, and seasoned delivery leaders to solve complex business and operational challenges.
-                            </span>
-                            <span className="block mb-6">
-                                Our delivery model is designed for speed, scale, and control. Modular, pod-based teams ramp up quickly, integrate seamlessly with core banking, lending, and enterprise platforms, and evolve with your technology and compliance ecosystem.
-                            </span>
-                            <span className="block">
-                                Guiding our journey is a trusted network of industry advisors—former executives, technologists, and operators from across BFSI—who bring strategic perspective, challenge assumptions, and help us stay ahead of regulatory and market change.
-                            </span>
-                        </p>
+                        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto text-left">
+
+                            {/* Block 1 */}
+                            <div>
+                                <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                                    Deep Industry Experience
+                                </h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Our leadership team brings decades of hands-on experience across mortgage lending,
+                                    servicing operations, and the broader BFSI landscape—including banking,
+                                    financial services, and regulated enterprise environments.
+                                </p>
+                            </div>
+
+                            {/* Block 2 */}
+                            <div>
+                                <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                                    Multidisciplinary Execution
+                                </h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Mortgage and title specialists work alongside BFSI SMEs, AI practitioners,
+                                    automation architects, and seasoned delivery leaders to solve complex
+                                    business and operational challenges.
+                                </p>
+                            </div>
+
+                            {/* Block 3 */}
+                            <div>
+                                <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                                    Scalable Delivery Model
+                                </h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Our modular, pod-based teams ramp up quickly, integrate seamlessly with
+                                    core banking and enterprise platforms, and evolve with your technology
+                                    and compliance ecosystem.
+                                </p>
+                            </div>
+
+                            {/* Block 4 */}
+                            <div>
+                                <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                                    Strategic Advisory Network
+                                </h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    A trusted network of former executives, technologists, and operators
+                                    provides strategic perspective, challenges assumptions, and keeps us
+                                    ahead of regulatory and market change.
+                                </p>
+                            </div>
+
+                        </div>
                     </motion.div>
+
 
 
                     {/* Partners Grid */}
@@ -460,8 +479,8 @@ const About = () => {
                         ))}
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 };
 
