@@ -12,7 +12,7 @@ interface PageHeroProps {
 
 const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, label, image, className = "", children }) => {
     return (
-        <section className={`relative w-full min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-[#FAFAF9] ${className}`}>
+        <section className={`relative w-full min-h-[50vh] md:min-h-[60vh] lg:min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-[#FAFAF9] ${className}`}>
 
             {/* Background Layers */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">

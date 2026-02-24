@@ -4,7 +4,7 @@ const Hero = () => {
     return (
         <section className="relative w-full min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-[#FAFAF9]">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 sm:gap-12 xl:gap-20 items-center justify-items-center xl:justify-items-start">
 
                     {/* Left Column: Text Content */}
                     <div className="space-y-6 sm:space-y-8 max-w-2xl animate-fade-in-up">
@@ -40,7 +40,7 @@ const Hero = () => {
                     </div>
 
                     {/* Right Column: PDF Field Extraction Interface - Hidden on mobile, visible on md+ */}
-                    <div className="relative hidden md:block">
+                    <div className="relative hidden xl:block">
                         {/* Background blobs */}
                         <div className="absolute top-0 right-0 w-[300px] md:w-[400px] lg:w-[500px] h-[300px] md:h-[400px] lg:h-[500px] bg-blue-100 rounded-full blur-3xl opacity-50 -z-10 animate-pulse"></div>
                         <div className="absolute bottom-0 left-0 w-[250px] md:w-[350px] lg:w-[400px] h-[250px] md:h-[350px] lg:h-[400px] bg-cyan-50 rounded-full blur-3xl opacity-50 -z-10"></div>

@@ -67,7 +67,7 @@ const Navbar = () => {
     ];
 
     const toggleSubmenu = (e: React.MouseEvent, name: string) => {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 1280) {
             e.preventDefault();
             setActiveSubmenu(activeSubmenu === name ? null : name);
         }
@@ -122,8 +122,8 @@ const Navbar = () => {
                 </NavLink>
 
 
-                <div className="flex md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse relative z-50 shrink-0">
-                    <NavLink to="/contact" className="hidden md:block" onClick={() => window.scrollTo(0, 0)}>
+                <div className="flex xl:order-2 space-x-2 xl:space-x-0 rtl:space-x-reverse relative z-50 shrink-0">
+                    <NavLink to="/contact" className="hidden xl:block" onClick={() => window.scrollTo(0, 0)}>
                         <button type="button" className="text-white bg-primary hover:bg-blue-600 hover:scale-105 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-xs md:text-sm px-4 py-2 md:px-6 md:py-2.5 text-center cursor-pointer transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transform whitespace-nowrap">
                             Get Started
                         </button>
@@ -132,7 +132,7 @@ const Navbar = () => {
                         onClick={() => setIsOpen(!isOpen)}
                         data-collapse-toggle="navbar-sticky"
                         type="button"
-                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-white/10 bg-transparent focus:outline-none focus:ring-2 focus:ring-gray-600"
+                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg xl:hidden hover:bg-white/10 bg-transparent focus:outline-none focus:ring-2 focus:ring-gray-600"
                         aria-controls="navbar-sticky"
                         aria-expanded={isOpen}
                     >
@@ -142,19 +142,19 @@ const Navbar = () => {
                         </svg>
                     </button>
                 </div>
-                <div className={`items-center justify-between w-full md:flex md:w-auto md:order-1 absolute md:relative top-full left-0 bg-[#0F172A] md:bg-transparent shadow-lg md:shadow-none transition-all duration-300 p-4 md:p-0 border-t border-white/10 md:border-none ${isOpen ? 'max-h-[80vh] overflow-y-auto opacity-100 visible' : 'max-h-0 md:max-h-none opacity-0 md:opacity-100 invisible md:visible overflow-hidden md:overflow-visible'}`} id="navbar-sticky">
-                    <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 relative">
+                <div className={`items-center justify-between w-full xl:flex xl:w-auto xl:order-1 absolute xl:relative top-full left-0 bg-[#0F172A] xl:bg-transparent shadow-lg xl:shadow-none transition-all duration-300 p-4 xl:p-0 border-t border-white/10 xl:border-none ${isOpen ? 'max-h-[80vh] overflow-y-auto opacity-100 visible' : 'max-h-0 xl:max-h-none opacity-0 xl:opacity-100 invisible xl:visible overflow-hidden xl:overflow-visible'}`} id="navbar-sticky">
+                    <ul className="flex flex-col p-4 xl:p-0 mt-4 font-medium xl:space-x-8 rtl:space-x-reverse xl:flex-row xl:mt-0 xl:border-0 relative">
                         {links.map((link) => (
                             <li
                                 key={link.name}
-                                className="group relative border-b border-white/5 md:border-none last:border-none"
+                                className="group relative border-b border-white/5 xl:border-none last:border-none"
                                 onMouseEnter={() => {
-                                    if (window.innerWidth >= 768) {
+                                    if (window.innerWidth >= 1280) {
                                         setActiveSubmenu(link.name);
                                     }
                                 }}
                                 onMouseLeave={() => {
-                                    if (window.innerWidth >= 768) {
+                                    if (window.innerWidth >= 1280) {
                                         setActiveSubmenu(null);
                                     }
                                 }}
@@ -165,7 +165,7 @@ const Navbar = () => {
                                         onClick={(e) => {
                                             if (link.megaMenu) {
                                                 toggleSubmenu(e, link.name);
-                                                if (window.innerWidth >= 768) {
+                                                if (window.innerWidth >= 1280) {
                                                     window.scrollTo(0, 0);
                                                     setActiveSubmenu(null);
                                                 }
@@ -180,11 +180,11 @@ const Navbar = () => {
                                     >
                                         <span className="relative z-10">{link.name}</span>
                                         {/* Desktop Underline Effect */}
-                                        <span className="hidden md:block absolute left-0 bottom-0 w-full h-[3px] bg-primary transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100 ease-in-out"></span>
+                                        <span className="hidden xl:block absolute left-0 bottom-0 w-full h-[3px] bg-primary transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100 ease-in-out"></span>
 
                                         {/* Mobile Arrow */}
                                         {link.megaMenu && (
-                                            <svg className={`w-4 h-4 ml-2 md:hidden transition-transform duration-300 ${activeSubmenu === link.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            <svg className={`w-4 h-4 ml-2 xl:hidden transition-transform duration-300 ${activeSubmenu === link.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                                         )}
                                     </NavLink>
                                 </div>
@@ -194,7 +194,7 @@ const Navbar = () => {
                                     <>
                                         {/* Desktop View */}
                                         <div
-                                            className={`hidden md:block absolute left-0 top-full w-[600px] lg:w-[800px] bg-secondary border-t border-white/10 shadow-xl transition-all duration-300 transform -z-10 h-auto rounded-b-xl overflow-hidden -left-20 lg:-left-40
+                                            className={`hidden xl:block absolute left-0 top-full w-[700px] 2xl:w-[800px] bg-secondary border-t border-white/10 shadow-xl transition-all duration-300 transform -z-10 h-auto rounded-b-xl overflow-hidden -left-20 2xl:-left-40
                                                 ${activeSubmenu === link.name ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}
                                         >
                                             <div className="p-8 grid grid-cols-12 gap-8">
@@ -235,7 +235,7 @@ const Navbar = () => {
                                         </div>
 
                                         {/* Mobile View (Accordion) */}
-                                        <div className={`md:hidden overflow-hidden transition-all duration-300 bg-white/5 ${activeSubmenu === link.name ? 'max-h-[500px] opacity-100 py-4' : 'max-h-0 opacity-0 py-0'}`}>
+                                        <div className={`xl:hidden overflow-hidden transition-all duration-300 bg-white/5 ${activeSubmenu === link.name ? 'max-h-[500px] opacity-100 py-4' : 'max-h-0 opacity-0 py-0'}`}>
                                             <div className="px-4 space-y-6">
                                                 {link.columns?.map((col, idx) => (
                                                     <div key={idx}>
@@ -271,7 +271,7 @@ const Navbar = () => {
                             </li>
                         ))}
                         {/* Mobile Only CTA Button */}
-                        <li className="mt-4 md:hidden pb-4">
+                        <li className="mt-4 xl:hidden pb-4">
                             <NavLink to="/contact" className="block w-full" onClick={() => { setIsOpen(false); window.scrollTo(0, 0); }}>
                                 <button type="button" className="w-full text-white bg-gradient-to-r from-primary to-accent hover:from-highlight hover:to-primary font-bold rounded-lg text-sm px-5 py-3 text-center transition-all duration-300 shadow-md">
                                     Request a Demo
