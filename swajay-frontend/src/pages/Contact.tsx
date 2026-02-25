@@ -1,6 +1,103 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// ─── Web3Forms Configuration ──────────────────────────────────────────────────
+// 1. Go to https://web3forms.com
+// 2. Enter your email (info@swajaysolutions.com) and click "Create Access Key"
+// 3. Check your inbox for the key and paste it below
+const WEB3FORMS_ACCESS_KEY = 'd939842d-6467-421a-a639-80f4f8827a6b';
+// ─────────────────────────────────────────────────────────────────────────────
+
+type FormState = {
+    name: string;
+    email: string;
+    phone: string;
+    company: string;
+    message: string;
+};
+
+type Status = 'idle' | 'loading' | 'success' | 'error';
 
 const Contact = () => {
+    const [form, setForm] = useState<FormState>({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+    });
+
+    const [errors, setErrors] = useState<Partial<FormState>>({});
+    const [status, setStatus] = useState<Status>('idle');
+
+    const validate = (): boolean => {
+        const newErrors: Partial<FormState> = {};
+        if (!form.name.trim()) newErrors.name = 'Full name is required.';
+        if (!form.email.trim()) {
+            newErrors.email = 'Email is required.';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+            newErrors.email = 'Enter a valid email address.';
+        }
+        if (!form.message.trim()) newErrors.message = 'Message cannot be empty.';
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target;
+        setForm(prev => ({ ...prev, [name]: value }));
+        if (errors[name as keyof FormState]) {
+            setErrors(prev => ({ ...prev, [name]: '' }));
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!validate()) return;
+
+        setStatus('loading');
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    subject: `New Contact from ${form.name} — Swajay Solutions`,
+                    from_name: form.name,
+                    email: form.email,
+                    phone: form.phone || 'Not provided',
+                    company: form.company || 'Not provided',
+                    message: form.message,
+                    botcheck: '',
+                }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setStatus('success');
+                setForm({ name: '', email: '', phone: '', company: '', message: '' });
+                setTimeout(() => setStatus('idle'), 6000);
+            } else {
+                throw new Error(data.message || 'Submission failed');
+            }
+        } catch (err) {
+            console.error('Web3Forms error:', err);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 6000);
+        }
+    };
+
+    const inputBase = 'w-full px-4 py-3 rounded-lg bg-gray-50 border text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 transition-colors';
+    const inputClass = (field: keyof FormState) =>
+        `${inputBase} ${errors[field]
+            ? 'border-red-400 focus:ring-red-400'
+            : 'border-gray-200 focus:border-primary focus:ring-primary'
+        }`;
+
     return (
         <div className="min-h-screen bg-blue-50">
             {/* Hero Section with Contact Form */}
@@ -37,36 +134,135 @@ const Contact = () => {
                             className="bg-white rounded-3xl p-8 md:p-10 border border-gray-100 shadow-xl"
                         >
                             <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-                            <form className="space-y-6">
+
+                            {/* Success / Error Banner */}
+                            <AnimatePresence>
+                                {status === 'success' && (
+                                    <motion.div
+                                        key="success"
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0 }}
+                                        className="mb-6 p-4 rounded-xl bg-green-50 border border-green-200 text-green-700 font-medium flex items-center gap-2"
+                                    >
+                                        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        Message sent! We'll get back to you soon.
+                                    </motion.div>
+                                )}
+                                {status === 'error' && (
+                                    <motion.div
+                                        key="error"
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0 }}
+                                        className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 font-medium flex items-center gap-2"
+                                    >
+                                        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                        Something went wrong. Please try again.
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
+                            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                                {/* Honeypot anti-spam (hidden) */}
+                                <input type="checkbox" name="botcheck" className="hidden" />
+
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                                        <input type="text" id="name" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Your name" />
+                                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Full Name <span className="text-red-500">*</span>
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            value={form.name}
+                                            onChange={handleChange}
+                                            className={inputClass('name')}
+                                            placeholder="Your name"
+                                        />
+                                        {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
                                     </div>
                                     <div>
-                                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                                        <input type="email" id="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="name@example.com" />
+                                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Email Address <span className="text-red-500">*</span>
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value={form.email}
+                                            onChange={handleChange}
+                                            className={inputClass('email')}
+                                            placeholder="name@example.com"
+                                        />
+                                        {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                                        <input type="tel" id="phone" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="+1 (555) 000-0000" />
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            value={form.phone}
+                                            onChange={handleChange}
+                                            className={inputClass('phone')}
+                                            placeholder="+1 (555) 000-0000"
+                                        />
                                     </div>
                                     <div>
                                         <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
-                                        <input type="text" id="company" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Your Company" />
+                                        <input
+                                            type="text"
+                                            id="company"
+                                            name="company"
+                                            value={form.company}
+                                            onChange={handleChange}
+                                            className={inputClass('company')}
+                                            placeholder="Your Company"
+                                        />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                                    <textarea id="message" rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none" placeholder="Tell us about your project or inquiry..."></textarea>
+                                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                                        Message <span className="text-red-500">*</span>
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        rows={4}
+                                        value={form.message}
+                                        onChange={handleChange}
+                                        className={`${inputClass('message')} resize-none`}
+                                        placeholder="Tell us about your project or inquiry..."
+                                    />
+                                    {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
                                 </div>
 
-                                <button type="submit" className="w-full py-4 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-lg hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1">
-                                    Send Message
+                                <button
+                                    type="submit"
+                                    disabled={status === 'loading'}
+                                    className="w-full py-4 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-lg hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+                                >
+                                    {status === 'loading' ? (
+                                        <>
+                                            <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                            </svg>
+                                            Sending…
+                                        </>
+                                    ) : (
+                                        'Send Message'
+                                    )}
                                 </button>
                             </form>
                         </motion.div>
@@ -143,7 +339,6 @@ const Contact = () => {
                         >
                             <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Locations</h2>
 
-                            {/* Embedded Google Map */}
                             <div className="w-full h-[400px] rounded-2xl overflow-hidden border border-gray-200 shadow-md mb-6">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d230.96729571996005!2d77.6392383224147!3d12.981826907006285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDU4JzU1LjAiTiA3N8KwMzgnMjEuOSJF!5e1!3m2!1sen!2sin!4v1771237712039!5m2!1sen!2sin"
