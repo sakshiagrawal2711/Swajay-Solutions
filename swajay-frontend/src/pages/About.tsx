@@ -40,7 +40,7 @@ const About = () => {
                         {/* Left Column: Text Content */}
                         <div className="text-left">
                             <span className="inline-block text-primary font-bold tracking-widest uppercase text-sm mb-4">
-                                About Us
+                                ABOUT US
                             </span>
 
                             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
