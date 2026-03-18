@@ -52,17 +52,17 @@ const Navbar = () => {
             ],
         },
         { name: 'Case Studies', path: '/case-studies' },
-        {
-            name: 'Solutions',
-            path: '/solutions',
-            megaMenu: true,
-            columns: [
-                {
-                    title: "AI-Powered Solutions",
-                    items: ["TitleNexus AI", "TitleOps AI"]
-                }
-            ]
-        },
+        // {
+        //     name: 'Solutions',
+        //     path: '/solutions',
+        //     megaMenu: true,
+        //     columns: [
+        //         {
+        //             title: "AI-Powered Solutions",
+        //             items: ["TitleNexus AI", "TitleOps AI"]
+        //         }
+        //     ]
+        // },
         { name: 'Contact', path: '/contact' },
     ];
 
