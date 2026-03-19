@@ -415,10 +415,10 @@ const About = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { id: 1, name: "Raju Gourishetty", role: "", image: muniraju },
-                            { id: 2, name: "Nagaraj Srinivasamurthy", role: "", image: nagaraj },
-                            { id: 3, name: "Muniraju S", role: "", image: partnerPhoto },
-                            { id: 4, name: "Thirumalesh M V", role: "", image: thirumalesh },
+                            { id: 1, name: "Raju Gourishetty", role: "", image: muniraju, email: "raju.gourishetty@swajaysolutions.com", linkedin: "https://www.linkedin.com/in/raju-gourishetty-14b8049/" },
+                            { id: 2, name: "Nagaraj Srinivasamurthy", role: "", image: nagaraj, email: "nagaraj.s@swajaysolutions.com", linkedin: "https://www.linkedin.com/in/nagaraj-srinivasamurthy/" },
+                            { id: 3, name: "Muniraju S", role: "", image: partnerPhoto, email: "muniraju@swajaysolutions.com", linkedin: "https://www.linkedin.com/in/muniraju-swamy-56345342/" },
+                            { id: 4, name: "Thirumalesh M V", role: "", image: thirumalesh, email: "thirumaleshmv@swajaysolutions.com", linkedin: "https://www.linkedin.com/in/thirumalesh-venkataramaiah-2b660117/" },
                         ].map((partner) => (
                             <motion.div
                                 key={partner.id}
@@ -459,19 +459,19 @@ const About = () => {
                                         <p className="text-primary text-sm mb-6">{partner.role}</p>
 
                                         <div className="space-y-4 w-full">
-                                            <div className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100 shadow-sm">
+                                            <a href={`mailto:${partner.email}`} className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100 shadow-sm">
                                                 <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                                 </svg>
-                                                <span className="text-sm font-medium text-gray-600">partner{partner.id}@swajay.com</span>
-                                            </div>
+                                                <span className="text-sm font-medium text-gray-600 truncate px-2">{partner.email}</span>
+                                            </a>
 
-                                            <div className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100 shadow-sm">
+                                            <a href={partner.linkedin} target="_blank" rel="noopener noreferrer" className="group/link flex items-center justify-center gap-3 p-3 rounded-lg bg-white hover:bg-gray-100 transition-colors cursor-pointer border border-gray-100 shadow-sm">
                                                 <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                                 </svg>
                                                 <span className="text-sm font-medium text-gray-600">LinkedIn Profile</span>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
