@@ -93,8 +93,8 @@ const Hero = () => {
                             {/* Upload Section */}
                             <div className="space-y-4">
                                 <div className="text-center">
-                                    <h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Upload ICE PDF</h4>
-                                    <p className="text-sm text-gray-600">Upload the ICE PDF to extract relevant fields and generate the report.</p>
+                                    <h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Upload PDF</h4>
+                                    <p className="text-sm text-gray-600">Upload the PDF to extract relevant fields and generate the report.</p>
                                 </div>
 
                                 <div className="space-y-2">
