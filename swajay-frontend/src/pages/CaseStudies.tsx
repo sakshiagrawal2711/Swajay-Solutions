@@ -169,10 +169,10 @@ const caseStudies: CaseStudy[] = [
         title: "Define & Implement a Data Strategy & Platform for a Leading Mortgage Company",
         category: "Data & Analytics",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-        quote: {
-            text: "The ETL team has been a great partner. The Swajay team has been quick to take up projects, explore a multitude of potential solutions to highly complex needs, and deliver results quickly. Communication has been quick, efficient, and they have made themselves available for supplementary calls as needed to complete their work and gain additional clarity into the solutions we are solving for. I've really enjoyed working with the team and look forward to continuing our work together.",
-            author: "Data Analysis Director"
-        },
+        // quote: {
+        //     text: "The ETL team has been a great partner. The Swajay team has been quick to take up projects, explore a multitude of potential solutions to highly complex needs, and deliver results quickly. Communication has been quick, efficient, and they have made themselves available for supplementary calls as needed to complete their work and gain additional clarity into the solutions we are solving for. I've really enjoyed working with the team and look forward to continuing our work together.",
+        //     author: "Data Analysis Director"
+        // },
         problem: [
             "Unstructured mortgage data scattered across disparate systems leading to inefficient & inaccurate business insight generation",
             "Difficult to manage the high-volume data as they were located on-premise making cost expensive & time consuming for scaling up/down",
