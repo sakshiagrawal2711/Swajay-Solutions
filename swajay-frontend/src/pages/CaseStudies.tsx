@@ -54,7 +54,7 @@ const caseStudies: CaseStudy[] = [
             ]
         },
         execution: [
-            "Login to the loan sphere application, traverse through the menu and select one of the pre-defined menu options",
+            "Login to the loan application, traverse through the menu and select one of the pre-defined menu options",
             "MSP Explorer window opens where current date, Investor codes and certain other customer / loan details are entered and click submit.",
             "A report gets generated and sent to business team for further action.",
             "Built using Blue Prism and it integrates with Web as well as Mainframe application as part of automation process.",
