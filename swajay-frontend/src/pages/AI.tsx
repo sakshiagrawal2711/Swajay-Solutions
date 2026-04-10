@@ -545,7 +545,7 @@ const AI = () => {
                                         {
                                             title: "Lean Co-Build Squad",
                                             desc: "Dedicated specialists with deep mortgage business and technology expertise work in sync with your team.",
-                                            highlight: "Speed & Agility: Weekly demos and transparent decision-making keep momentum high."
+                                            highlight: "Speed & Agility: Weekly demos and transparent decision-making keeps momentum high."
                                         }
                                     ].map((item, index) => (
                                         <motion.div
