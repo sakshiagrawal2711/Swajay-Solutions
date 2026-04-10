@@ -87,7 +87,7 @@ const caseStudies: CaseStudy[] = [
             "Challenges included – missing SLA’s, Accuracy in management, potential human errors, Time consumption"
         ],
         solution: {
-            timeline: "2 weeks that completely automated the entire order management process",
+            timeline: "It took 2 weeks to completely automate the entire order management process",
             discovery: [
                 "Detailed Process Analysis identifying bottlenecks and opportunities for process refinements",
                 "Collaborating with business team and IT teams to outline the automation solution",

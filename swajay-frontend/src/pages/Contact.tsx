@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // ─── Web3Forms Configuration ──────────────────────────────────────────────────
 // 1. Go to https://web3forms.com
-// 2. Enter your email (info@swajaysolutions.com) and click "Create Access Key"
+// 2. Enter your email (support@swajaysolutions.com) and click "Create Access Key"
 // 3. Check your inbox for the key and paste it below
 const WEB3FORMS_ACCESS_KEY = 'd939842d-6467-421a-a639-80f4f8827a6b';
 // ─────────────────────────────────────────────────────────────────────────────
@@ -312,7 +312,7 @@ const Contact = () => {
                                         Email Us
                                     </h3>
                                     <p className="text-gray-600 ml-7 break-all">
-                                        info@swajaysolutions.com
+                                        support@swajaysolutions.com
                                     </p>
                                 </div>
                             </div>
@@ -320,7 +320,7 @@ const Contact = () => {
                             <div className="mt-10 pt-8 border-t border-gray-100">
                                 <h3 className="text-xl font-bold text-gray-900 mb-4">Connect With Us</h3>
                                 <div className="flex gap-4">
-                                    <a href="#" className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-blue-700 hover:scale-110 transition-all duration-300 shadow-lg shadow-blue-500/30">
+                                    <a href="https://www.linkedin.com/company/swajaybusinesssolutions/" target="_blank" className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-blue-700 hover:scale-110 transition-all duration-300 shadow-lg shadow-blue-500/30">
                                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd"></path></svg>
                                     </a>
                                     <a href="#" className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-blue-700 hover:scale-110 transition-all duration-300 shadow-lg shadow-blue-500/30">

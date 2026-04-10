@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
                     19 Holly Cove Ln,<br />
                     Dover, DE 19901<br />
                     United States<br />
-                    Email: info@swajaysolutions.com
+                    Email: support@swajaysolutions.com
                 </p>
             </div>
         </div>
