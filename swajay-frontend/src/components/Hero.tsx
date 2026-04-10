@@ -99,8 +99,8 @@ const Hero = () => {
 
                                 <div className="space-y-2">
                                     <div className="flex justify-between items-center">
-                                        <span className="text-sm font-semibold text-gray-900">ICE PDF</span>
-                                        <span className="text-xs text-gray-500">File extracted from ICE</span>
+                                        <span className="text-sm font-semibold text-gray-900">PDF</span>
+                                        <span className="text-xs text-gray-500">File extracted from source</span>
                                     </div>
 
                                     {/* Upload Box */}
