@@ -311,7 +311,7 @@ const About = () => {
                     {[
                         { number: 100, suffix: "%", label: "Client Satisfaction" },
                         { number: 24, suffix: "/7", label: "Support" },
-                        { number: 99, suffix: ".3%", label: "Quality" },
+                        { number: 99, suffix: ".7%", label: "Quality" },
                         { number: 100, suffix: "%", label: "Regulatory Compliance" }
                     ].map((stat, index) => (
                         <div key={index} className="space-y-2">
